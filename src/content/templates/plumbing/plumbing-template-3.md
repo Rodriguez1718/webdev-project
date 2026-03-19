@@ -1,10 +1,10 @@
 ---
-title: "Modern Residential Plumbing"
+title: "24/7 Expert Plumbing Solutions"
 trade: "Plumbing"
-description: "A clean, conversion-optimized landing page for residential plumbing services featuring a clear service breakdown and booking CTA."
-thumbnail: "/images/plumbing1.png"
-liveDemoUrl: "https://plumbing-template-1-beta.vercel.app/"
-mainSiteUrl: "https://plumbing-template-1-beta.vercel.app/"
+description: "A high-impact landing page specifically built for emergency plumbing calls with high-visibility phone numbers and trust signals."
+thumbnail: "/images/plumbing3.png"
+liveDemoUrl: "https://plumbing-template-3-wheat.vercel.app/"
+mainSiteUrl: "https://plumbing-template-3-wheat.vercel.app/"
 category: "Landing Page"
 ---
 

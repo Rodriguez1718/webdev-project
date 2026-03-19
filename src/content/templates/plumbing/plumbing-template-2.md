@@ -1,10 +1,10 @@
 ---
-title: "Modern Residential Plumbing"
+title: "Elite Plumbing & Drain Care"
 trade: "Plumbing"
-description: "A clean, conversion-optimized landing page for residential plumbing services featuring a clear service breakdown and booking CTA."
-thumbnail: "/images/plumbing1.png"
-liveDemoUrl: "https://plumbing-template-1-beta.vercel.app/"
-mainSiteUrl: "https://plumbing-template-1-beta.vercel.app/"
+description: "A professional service-oriented template designed for plumbing contractors focusing on credibility, reviews, and rapid response."
+thumbnail: "/images/download.avif"
+liveDemoUrl: "https://plumbing-template-2-orcin.vercel.app/"
+mainSiteUrl: "https://plumbing-template-2-orcin.vercel.app/"
 category: "Landing Page"
 ---
 
