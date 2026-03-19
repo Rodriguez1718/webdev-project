@@ -1,0 +1,108 @@
+---
+// FormInput Component - Flexible reusable form input
+// Supports text, email, tel, textarea, and select inputs with multiple variants
+
+export interface Props {
+    type?: "text" | "email" | "tel" | "textarea" | "select";
+    name: string;
+    id?: string;
+    placeholder?: string;
+    label?: string;
+    required?: boolean;
+    rows?: number;
+    options?: Array<{ value: string; label: string }>;
+    variant?: "light" | "glass" | "dark";
+    class?: string;
+}
+
+const {
+    type = "text",
+    name,
+    id = name,
+    placeholder = "",
+    label,
+    required = false,
+    rows = 4,
+    options = [],
+    variant = "light",
+    class: className = "",
+} = Astro.props;
+
+// Variant styles
+const variantStyles = {
+    light: {
+        wrapper: "bg-white/10 border-white/20",
+        text: "text-white",
+        focus: "focus:border-[var(--helios-orange)] focus:ring-2 focus:ring-[var(--helios-orange)]/20",
+        label: "text-white",
+        placeholderClass: "placeholder-white/80",
+    },
+    glass: {
+        wrapper: "bg-white/20 backdrop-blur-sm border-white/30",
+        text: "text-white",
+        focus: "focus:border-white focus:bg-white/30 focus:ring-2 focus:ring-white/20",
+        label: "text-white",
+        placeholderClass: "placeholder-white/80",
+    },
+    dark: {
+        wrapper: "bg-white border-[#99B0BB]/30",
+        text: "text-[#0A1931]",
+        focus: "focus:border-[#F48C06] focus:ring-2 focus:ring-[#F48C06]/20",
+        label: "text-[#0A1931]",
+        placeholderClass: "placeholder-[#7E7E7E]",
+    },
+};
+
+const style = variantStyles[variant];
+const baseClasses = `w-full px-4 py-3 rounded-lg border transition-all duration-200 focus:outline-none ${style.wrapper} ${style.text} ${style.focus} ${style.placeholderClass} ${className}`;
+---
+
+{
+    label && (
+        <label
+            for={id}
+            class={`block text-sm font-semibold mb-2 ${style.label}`}
+        >
+            {label}
+            {required && <span class="text-[#F48C06]">*</span>}
+        </label>
+    )
+}
+
+{
+    type === "textarea" ? (
+        <textarea
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            rows={rows}
+            required={required}
+            class={`${baseClasses} resize-none`}
+        />
+    ) : type === "select" ? (
+        <select id={id} name={name} required={required} class={baseClasses}>
+            <option
+                value=""
+                disabled
+                selected
+                class="text-[#0A1931] bg-[#0a1931]"
+            >
+                {placeholder || "Select an option"}
+            </option>
+            {options.map((option) => (
+                <option value={option.value} class="text-white bg-[#0a1931]">
+                    {option.label}
+                </option>
+            ))}
+        </select>
+    ) : (
+        <input
+            type={type}
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            required={required}
+            class={baseClasses}
+        />
+    )
+}

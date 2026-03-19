@@ -1,0 +1,25 @@
+---
+// Badge Component - Reusable eyebrow/badge for section headers
+export interface Props {
+    text: string;
+    variant?: "orange" | "white";
+    centered?: boolean;
+}
+
+const { text, variant = "orange", centered = false } = Astro.props;
+---
+
+<div
+    class:list={[
+        "inline-block px-4 py-2 rounded-full text-sm font-semibold tracking-wider uppercase mb-6",
+        {
+            "text-[var(--helios-orange)]": variant === "orange",
+            "text-white": variant === "white",
+        },
+    ]}
+    style={variant === "orange"
+        ? "background: color-mix(in srgb, var(--helios-orange) 10%, transparent);"
+        : "background: color-mix(in srgb, white 10%, transparent);"}
+>
+    {text}
+</div>
