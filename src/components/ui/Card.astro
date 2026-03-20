@@ -66,6 +66,11 @@ const displayTags = tags.length > 0 ? tags : [category, trade].filter(Boolean);
   }
 
   <div class="p-6">
+    {/* Slot content - renders icon first */}
+    <div class="text-[#7E7E7E] text-base leading-relaxed font-primary">
+      <slot />
+    </div>
+
     {
       title && (
         <h3 class="font-primary text-xl font-bold text-[#0A1931] mb-3 group-hover:text-[#F48C06] transition-colors">
@@ -94,11 +99,6 @@ const displayTags = tags.length > 0 ? tags : [category, trade].filter(Boolean);
         <p class="text-base text-[#0A1931] leading-relaxed">{description}</p>
       )
     }
-
-    {/* Slot content */}
-    <div class="text-[#7E7E7E] text-base leading-relaxed font-primary">
-      <slot />
-    </div>
 
     {/* Template action buttons */}
     {
