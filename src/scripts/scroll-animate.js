@@ -405,6 +405,39 @@ ready(() => {
     once:      true,
   });
   
-
+//--------------------------------------------Reviews.astro
+  animate("success-stories-tag", {
+    from:      "fade-left",
+    delay:     0,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  animateText("success-stories-title", {
+    wordDelay:  100,  // delay between words
+    charDelay:  20,   // delay between characters in a word
+    startDelay: 0,    // initial delay before starting
+    duration:   1000,  // animation duration per character
+    distance:   30,   // pixels to slide from right
+    threshold:  0.15, // scroll trigger point
+    once:       true  // animate only once
+  });
+  animate("success-stories-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  animate("success-stories-carousel", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
 
 });
