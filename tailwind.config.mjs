@@ -17,4 +17,14 @@ export default {
     },
   },
   plugins: [],
+  // Optimize for production builds
+  safelist: [
+    // Add any dynamic classes that won't be detected by content scanning
+    'opacity-0',
+    'opacity-100',
+    'translate-x-0',
+    'translate-y-0',
+    'scale-110',
+    'rotate-180',
+  ],
 }

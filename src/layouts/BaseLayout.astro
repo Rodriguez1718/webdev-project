@@ -19,7 +19,9 @@ const {
 
 		<meta name="description" content={description} />
 
-		<!-- Preload critical font with font-display: swap to prevent FOUT -->
+		<!-- CRITICAL: Preload Google Fonts with font-display: swap to prevent FOIT/FOUT -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			rel="preload"
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
@@ -29,6 +31,52 @@ const {
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
 			rel="stylesheet"
 		/>
+
+		<!-- CRITICAL: Inline critical CSS for LCP element to bypass stylesheet network request -->
+		<style>
+			/* Critical path CSS for Hero LCP text */
+			body {
+				font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+
+			section {
+				display: block;
+			}
+
+			h1,
+			p {
+				margin: 0;
+				padding: 0;
+			}
+
+			/* Hero section critical styles */
+			.hero-lcp {
+				color: white;
+				font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+				font-weight: 700;
+				line-height: 1.2;
+				letter-spacing: -0.02em;
+			}
+
+			.hero-description {
+				color: white;
+				font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+				font-weight: 400;
+				line-height: 1.6;
+				font-size: 1rem;
+			}
+
+			/* Prevent layout shift */
+			html {
+				scroll-behavior: auto;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+		</style>
 
 		<title>{title}</title>
 	</head>
