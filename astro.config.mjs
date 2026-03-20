@@ -10,7 +10,7 @@ export default defineConfig({
     build: {
       // Optimize CSS minification
       minify: 'terser',
-      cssCodeSplit: true,
+      cssCodeSplit: false,
       rollupOptions: {
         output: {
           manualChunks: undefined,
@@ -21,8 +21,8 @@ export default defineConfig({
       external: ['svgo'],
     },
   },
-  // Optimize build output
+  // CRITICAL: Inline all stylesheets to eliminate separate CSS network requests
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
 }); 
