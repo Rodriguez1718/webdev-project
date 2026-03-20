@@ -1013,6 +1013,73 @@ ready(() => {
     once:      true,
   });
 
+//--------------------------------------------ContactForm.astro
+  animate("contact-tag", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("contact-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("contact-desc", {
+    from:      "fade-right",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  // Animate 3 contact option cards with staggered delays
+  animate("contact-option-phone", {
+    from:      "fade-right",
+    delay:     150,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("contact-option-email", {
+    from:      "fade-right",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("contact-option-address", {
+    from:      "fade-right",
+    delay:     450,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+  
+  // Animate form card from left
+  animate("contact-form-card", {
+    from:      "fade-left",
+    delay:     0,
+    duration:  800,
+    distance:  100,
+    threshold: 0.15,
+    once:      true,
+  });
+
 });
 
 
