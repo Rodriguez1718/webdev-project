@@ -3,9 +3,9 @@
 // Displays key performance indicators in a minimal, non-redundant format
 
 const metrics = [
-  { number: "2,500+", label: "Websites Built", icon: "globe" },
-  { number: "150%", label: "Lead Increase", icon: "chart" },
-  { number: "4.9/5", label: "Client Rating", icon: "star" },
+  { number: "2500", suffix: "+", label: "Websites Built", icon: "globe" },
+  { number: "150", suffix: "%", label: "Lead Increase", icon: "chart" },
+  { number: "4.9", suffix: "/5", label: "Client Rating", icon: "star" },
 ];
 
 const getIcon = (type: string) => {
@@ -18,7 +18,7 @@ const getIcon = (type: string) => {
 };
 ---
 
-<section class="py-12 md:py-16 px-6 bg-parchment border-y border-[#E5E7EB] relative overflow-hidden">
+<section class="py-12 md:py-16 px-6 bg-parchment border-y border-[#E5E7EB] relative overflow-hidden results-infographic">
   <div class="absolute inset-0 bg-linear-to-r from-[#F48C06]/5 via-transparent to-[#1B4D7E]/5 -z-10"></div>
 
   <div class="container-custom">
@@ -35,24 +35,33 @@ const getIcon = (type: string) => {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {metrics.map((metric, index) => (
         <div class="group relative" style={`animation-delay: ${index * 0.1}s; animation: fadeIn 0.5s ease-out forwards; opacity: 0;`}>
-          <div class="relative bg-white rounded-xl border border-[#E5E7EB] transition-all duration-300 overflow-hidden p-6 md:p-8 hover:border-[#F48C06] hover:shadow-lg">
-            <div class="absolute inset-0 bg-linear-to-br from-[#F48C06]/5 to-[#1B4D7E]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            <div class="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#F48C06] to-[#1B4D7E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, var(--helios-orange), #ff6b35);">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={getIcon(metric.icon)} />
-              </svg>
+          <div class="bg-[var(--midnight-navy)] hover:bg-[var(--helios-orange)] p-8 rounded-3xl transition-all duration-400 relative overflow-hidden border border-white/10 min-h-[280px] flex flex-col hover:shadow-[0_15px_35px_rgba(244,140,6,0.3)]">
+            
+            <div class="flex justify-between items-start mb-8 flex-1">
+              <h4 class="text-white text-xl font-semibold leading-tight max-w-[60%] transition-colors duration-400">
+                {metric.label}
+              </h4>
+              <div class="text-[var(--steel-pewter)] opacity-60 transition-all duration-400 group-hover:text-white group-hover:opacity-100 group-hover:scale-105">
+                <svg class="w-12 h-12 text-white stroke-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={getIcon(metric.icon)} />
+                </svg>
+              </div>
             </div>
 
-            <!-- Content -->
-            <div class="text-4xl md:text-5xl font-extrabold text-[#0A1931] mb-2 group-hover:text-[#F48C06] transition-colors duration-300">
-              {metric.number}
+            <div class="h-px bg-[var(--steel-pewter)] mb-8 w-full opacity-30 transition-all duration-400 group-hover:bg-white group-hover:opacity-50"></div>
+
+            <div class="mt-auto">
+              <div 
+                class="text-6xl font-extrabold text-white leading-none mb-2 flex items-baseline transition-colors duration-400"
+                data-target={metric.number}
+                data-suffix={metric.suffix}
+              >
+                0<span class="text-white text-5xl ml-1 transition-colors duration-400">{metric.suffix}</span>
+              </div>
+              <p class="text-[var(--steel-pewter)] text-base font-medium leading-tight transition-colors duration-400 group-hover:text-white">
+                {metric.label}
+              </p>
             </div>
-            <p class="text-sm md:text-base font-semibold text-machinist">
-              {metric.label}
-            </p>
           </div>
         </div>
       ))}
@@ -67,3 +76,74 @@ const getIcon = (type: string) => {
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Counter animation function
+    function animateCounter(
+      element: HTMLElement,
+      target: number,
+      suffix: string,
+      duration: number,
+    ) {
+      let start = 0;
+      const increment = target / (duration / 16);
+
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          const currentValue = target % 1 !== 0 ? start.toFixed(1) : Math.floor(start).toLocaleString();
+          element.innerHTML =
+            currentValue +
+            '<span class="text-white text-5xl ml-1 transition-colors duration-400">' +
+            suffix +
+            "</span>";
+          requestAnimationFrame(updateCounter);
+        } else {
+          const finalValue = target % 1 !== 0 ? target.toFixed(1) : target.toLocaleString();
+          element.innerHTML =
+            finalValue +
+            '<span class="text-white text-5xl ml-1 transition-colors duration-400">' +
+            suffix +
+            "</span>";
+        }
+      }
+
+      updateCounter();
+    }
+
+    // Intersection Observer for counter animation
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll("[data-target]");
+
+            counters.forEach(function (counter) {
+              const targetAttr = counter.getAttribute("data-target");
+              const suffixAttr = counter.getAttribute("data-suffix");
+
+              if (targetAttr && !counter.classList.contains("animated")) {
+                const target = parseFloat(targetAttr);
+                const suffix = suffixAttr || "";
+
+                counter.classList.add("animated");
+                animateCounter(counter as HTMLElement, target, suffix, 2000);
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    // Observe the results section specifically
+    const resultsSection = document.querySelector(".results-infographic");
+    if (resultsSection) {
+      observer.observe(resultsSection);
+    }
+  });
+</script>
