@@ -16,11 +16,11 @@ export interface Props {
   showButtons?: boolean;
 }
 
-const { 
-  title, 
-  accent = 'orange', 
-  img, 
-  imgAlt, 
+const {
+  title,
+  accent = "orange",
+  img,
+  imgAlt,
   tags = [],
   // Template props
   trade,
@@ -29,93 +29,115 @@ const {
   liveDemoUrl,
   mainSiteUrl,
   templateSlug,
-  showButtons = false
+  showButtons = false,
 } = Astro.props;
 
 const accentBg: Record<string, string> = {
   orange: "bg-[#F48C06]",
   navy: "bg-[#0A1931]",
   pewter: "bg-[#99B0BB]",
-  white: "bg-white"
+  white: "bg-white",
 };
 
 const accentBorder: Record<string, string> = {
-  orange: 'border-l-[#F48C06]',
-  navy: 'border-l-[#0A1931]',
-  pewter: 'border-l-[#99B0BB]',
-  white: 'border-l-white',
+  orange: "border-l-[#F48C06]",
+  navy: "border-l-[#0A1931]",
+  pewter: "border-l-[#99B0BB]",
+  white: "border-l-white",
 };
 
 // Auto-generate tags from template data if not provided
 const displayTags = tags.length > 0 ? tags : [category, trade].filter(Boolean);
 ---
 
-<div class={`group bg-white border border-[#99B0BB] border-l-4 ${accentBorder[accent] || accentBorder.orange} rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-[#F48C06]`}>
-  {img && (
-    <div class="overflow-hidden aspect-video">
-      <img
-        src={img}
-        alt={imgAlt || `${title} preview`}
-        class="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-105"
-      />
-    </div>
-  )}
-  
-  <div class="p-6">
-    {title && (
-      <h3 class="font-primary text-xl font-bold text-[#0A1931] mb-3 group-hover:text-[#F48C06] transition-colors">
-        {title}
-      </h3>
-    )}
-    
-    {displayTags.length > 0 && (
-      <div class="space-y-2 mb-4">
-        {displayTags.map((tag) => (
-          <div class={`inline-block font-primary text-xs font-semibold tracking-wide uppercase px-3 py-1.5 mr-2 mb-2 ${accentBg[accent] || accentBg.orange} text-white rounded-lg`}>
-            {tag}
-          </div>
-        ))}
+<div
+  class={`group bg-white border border-[#99B0BB] border-l-4 ${accentBorder[accent] || accentBorder.orange} rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-[#F48C06]`}
+>
+  {
+    img && (
+      <div class="overflow-hidden aspect-video">
+        <img
+          src={img}
+          alt={imgAlt || `${title} preview`}
+          class="w-full h-full object-cover transition-all duration-500 scale-100 group-hover:scale-105"
+        />
       </div>
-    )}
+    )
+  }
+
+  <div class="p-6">
+    {
+      title && (
+        <h3 class="font-primary text-xl font-bold text-[#0A1931] mb-3 group-hover:text-[#F48C06] transition-colors">
+          {title}
+        </h3>
+      )
+    }
+
+    {
+      displayTags.length > 0 && (
+        <div class="space-y-2 mb-4">
+          {displayTags.map((tag) => (
+            <div
+              class={`inline-block font-primary text-xs font-semibold tracking-wide uppercase px-3 py-1.5 mr-2 mb-2 ${accentBg[accent] || accentBg.orange} text-white rounded-lg`}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+      )
+    }
 
     {/* Description for templates */}
-    {description && (
-      <p class="text-[#7E7E7E] text-base leading-relaxed font-primary mb-4">
-        {description}
-      </p>
-    )}
+    {
+      description && (
+        <p class="text-base text-[#0A1931] leading-relaxed">{description}</p>
+      )
+    }
 
     {/* Slot content */}
     <div class="text-[#7E7E7E] text-base leading-relaxed font-primary">
-      <slot/>
+      <slot />
     </div>
 
     {/* Template action buttons */}
-    {showButtons && (
-      <div class="flex flex-col gap-3 mt-6">
-        {templateSlug && (
-          <a 
-            href={`/templates/${templateSlug}`}
-            class="inline-flex items-center justify-center gap-2 font-primary font-semibold border-none rounded-xl transition-all duration-300 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F48C06] disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider bg-gradient-to-br from-[var(--helios-orange)] to-[#ff6b35] text-white hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(244,140,6,0.3)] active:translate-y-0 px-6 py-3 text-sm w-full"
-          >
-            View Details
-          </a>
-        )}
-        
-        {liveDemoUrl && (
-          <a 
-            href={liveDemoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 font-primary font-semibold border-2 rounded-xl transition-all duration-300 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F48C06] disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider bg-transparent border-[#99B0BB] text-[#7E7E7E] hover:text-[#0A1931] hover:border-[#0A1931] hover:-translate-y-0.5 active:translate-y-0 px-6 py-3 text-sm w-full"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-            Live Demo
-          </a>
-        )}
-      </div>
-    )}
+    {
+      showButtons && (
+        <div class="flex flex-col gap-3 mt-6">
+          {templateSlug && (
+            <a
+              href={`/templates/${templateSlug}`}
+              class="inline-flex items-center justify-center gap-2 font-primary font-semibold border-none rounded-xl transition-all duration-300 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F48C06] disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider bg-gradient-to-br from-[var(--helios-orange)] to-[#ff6b35] text-white hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(244,140,6,0.3)] active:translate-y-0 px-6 py-3 text-sm w-full"
+            >
+              View Details
+            </a>
+          )}
+
+          {liveDemoUrl && (
+            <a
+              href={liveDemoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 font-primary font-semibold border-2 rounded-xl transition-all duration-300 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F48C06] disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider bg-transparent border-[#99B0BB] text-[#7E7E7E] hover:text-[#0A1931] hover:border-[#0A1931] hover:-translate-y-0.5 active:translate-y-0 px-6 py-3 text-sm w-full"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+              Live Demo
+            </a>
+          )}
+        </div>
+      )
+    }
   </div>
 </div>
