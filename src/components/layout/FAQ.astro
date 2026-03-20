@@ -1,17 +1,16 @@
 ---
 // FAQ Component
 // Modern accordion UI with left content and right accordion
-import Badge from "../ui/Badge.astro";
 ---
 
 <section
-    class="bg-gradient-to-br from-[#0a1931] to-[#1a2a4a] py-16 px-8 md:px-4 flex items-center justify-center font-primary"
+    class="bg-gradient-to-br from-[#0a1931] to-[#1a2a4a] py-20 flex items-center justify-center font-primary"
 >
     <div
-        class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 max-w-7xl w-full items-start"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-12 max-w-7xl w-full items-start px-8"
     >
         <!-- Left Content -->
-        <div class="flex flex-col justify-center px-4 lg:px-8">
+        <div class="flex flex-col justify-center">
             <span
                 class="text-sm font-semibold tracking-widest uppercase"
                 style="color: var(--helios-orange);"
@@ -19,7 +18,7 @@ import Badge from "../ui/Badge.astro";
                 FAQ
             </span>
             <h2
-                class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
+                class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight mt-[16px]"
             >
                 Frequently <span class="text-[#F48C06]">Asked</span> Questions
             </h2>
@@ -37,8 +36,9 @@ import Badge from "../ui/Badge.astro";
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06] focus:ring-offset-2 focus:ring-offset-[#0a1931]"
                         aria-expanded="false"
+                        aria-controls="faq-content-1"
                     >
                         <span
                             class="text-base font-semibold text-white transition-colors duration-300"
@@ -46,10 +46,11 @@ import Badge from "../ui/Badge.astro";
                             How long does a typical project take?
                         </span>
                         <svg
-                            class="faq-icon w-6 h-6 text-[#F48C06] flex-shrink-0 transition-transform duration-300"
+                            class="faq-icon w-6 h-6 text-[#F48C06] shrink-0 transition-transform duration-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
+                            aria-hidden="true"
                         >
                             <path
                                 stroke-linecap="round"
@@ -60,9 +61,10 @@ import Badge from "../ui/Badge.astro";
                     </button>
                     <div
                         class="faq-content hidden overflow-hidden transition-all duration-300"
+                        id="faq-content-1"
                     >
                         <p
-                            class="text-sm text-[#99B0BB] leading-relaxed px-2 pb-6 animate-slideDown"
+                            class="text-sm text-white leading-relaxed px-2 pb-6 animate-slideDown"
                         >
                             Project timelines vary depending on the scope and
                             complexity. Most residential projects take between
@@ -77,8 +79,9 @@ import Badge from "../ui/Badge.astro";
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06] focus:ring-offset-2 focus:ring-offset-[#0a1931]"
                         aria-expanded="false"
+                        aria-controls="faq-content-2"
                     >
                         <span
                             class="text-base font-semibold text-white transition-colors duration-300"
@@ -86,7 +89,8 @@ import Badge from "../ui/Badge.astro";
                             Do you offer warranties on your work?
                         </span>
                         <svg
-                            class="faq-icon w-6 h-6 text-[#F48C06] flex-shrink-0 transition-transform duration-300"
+                            class="faq-icon w-6 h-6 text-[#F48C06] shrink-0 transition-transform duration-300"
+                            aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -100,9 +104,10 @@ import Badge from "../ui/Badge.astro";
                     </button>
                     <div
                         class="faq-content hidden overflow-hidden transition-all duration-300"
+                        id="faq-content-2"
                     >
                         <p
-                            class="text-sm text-[#99B0BB] leading-relaxed px-2 pb-6 animate-slideDown"
+                            class="text-sm text-white leading-relaxed px-2 pb-6 animate-slideDown"
                         >
                             Yes, we stand behind our work. All projects come
                             with a 1-year warranty on labor and materials.
@@ -117,8 +122,9 @@ import Badge from "../ui/Badge.astro";
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06] focus:ring-offset-2 focus:ring-offset-[#0a1931]"
                         aria-expanded="false"
+                        aria-controls="faq-content-3"
                     >
                         <span
                             class="text-base font-semibold text-white transition-colors duration-300"
@@ -126,7 +132,8 @@ import Badge from "../ui/Badge.astro";
                             What payment methods do you accept?
                         </span>
                         <svg
-                            class="faq-icon w-6 h-6 text-[#F48C06] flex-shrink-0 transition-transform duration-300"
+                            class="faq-icon w-6 h-6 text-[#F48C06] shrink-0 transition-transform duration-300"
+                            aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -140,9 +147,10 @@ import Badge from "../ui/Badge.astro";
                     </button>
                     <div
                         class="faq-content hidden overflow-hidden transition-all duration-300"
+                        id="faq-content-3"
                     >
                         <p
-                            class="text-sm text-[#99B0BB] leading-relaxed px-2 pb-6 animate-slideDown"
+                            class="text-sm text-white leading-relaxed px-2 pb-6 animate-slideDown"
                         >
                             We accept all major credit cards, checks, bank
                             transfers, and financing options. A 50% deposit is
@@ -157,8 +165,9 @@ import Badge from "../ui/Badge.astro";
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06] focus:ring-offset-2 focus:ring-offset-[#0a1931]"
                         aria-expanded="false"
+                        aria-controls="faq-content-4"
                     >
                         <span
                             class="text-base font-semibold text-white transition-colors duration-300"
@@ -166,7 +175,8 @@ import Badge from "../ui/Badge.astro";
                             Are your contractors licensed and insured?
                         </span>
                         <svg
-                            class="faq-icon w-6 h-6 text-[#F48C06] flex-shrink-0 transition-transform duration-300"
+                            class="faq-icon w-6 h-6 text-[#F48C06] shrink-0 transition-transform duration-300"
+                            aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -180,9 +190,10 @@ import Badge from "../ui/Badge.astro";
                     </button>
                     <div
                         class="faq-content hidden overflow-hidden transition-all duration-300"
+                        id="faq-content-4"
                     >
                         <p
-                            class="text-sm text-[#99B0BB] leading-relaxed px-2 pb-6 animate-slideDown"
+                            class="text-sm text-white leading-relaxed px-2 pb-6 animate-slideDown"
                         >
                             Absolutely. All our contractors are fully licensed,
                             insured, and bonded. We verify credentials for every
@@ -195,8 +206,9 @@ import Badge from "../ui/Badge.astro";
                 <!-- FAQ Item 5 -->
                 <div class="faq-item transition-all duration-300">
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06] focus:ring-offset-2 focus:ring-offset-[#0a1931]"
                         aria-expanded="false"
+                        aria-controls="faq-content-5"
                     >
                         <span
                             class="text-base font-semibold text-white transition-colors duration-300"
@@ -204,7 +216,8 @@ import Badge from "../ui/Badge.astro";
                             How do I get a free estimate?
                         </span>
                         <svg
-                            class="faq-icon w-6 h-6 text-[#F48C06] flex-shrink-0 transition-transform duration-300"
+                            class="faq-icon w-6 h-6 text-[#F48C06] shrink-0 transition-transform duration-300"
+                            aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -218,9 +231,10 @@ import Badge from "../ui/Badge.astro";
                     </button>
                     <div
                         class="faq-content hidden overflow-hidden transition-all duration-300"
+                        id="faq-content-5"
                     >
                         <p
-                            class="text-sm text-[#99B0BB] leading-relaxed px-2 pb-6 animate-slideDown"
+                            class="text-sm text-white leading-relaxed px-2 pb-6 animate-slideDown"
                         >
                             Simply fill out our contact form or call us
                             directly. We'll schedule a convenient time to visit

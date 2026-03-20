@@ -16,7 +16,10 @@ const plumbingTemplates = allTemplates.filter(
 );
 ---
 
-<BaseLayout>
+<BaseLayout
+    title="Our Work - Professional Website Templates for Contractors"
+    description="Explore our portfolio of professional website templates designed for HVAC and plumbing contractors. See how we've transformed businesses with innovative digital solutions."
+>
     <main>
         <Hero2
             eyebrow="OUR PORTFOLIO"
@@ -26,15 +29,15 @@ const plumbingTemplates = allTemplates.filter(
             showForm={true}
         />
         <!-- HVAC Templates Section -->
-        <section class="py-20 px-4 md:px-8 lg:px-12 bg-parchment">
-            <div class="max-w-7xl mx-auto">
+        <section class="py-20 bg-parchment">
+            <div class="max-w-7xl mx-auto px-8">
                 <div class="mb-12">
                     <h2
                         class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-4"
                     >
                         <span style="color: var(--midnight-navy);">HVAC</span> Templates
                     </h2>
-                    <p class="text-lg text-[#7E7E7E] max-w-3xl">
+                    <p class="text-lg text-[#0A1931] max-w-3xl">
                         Professional website designs tailored for HVAC
                         contractors and service providers.
                     </p>
@@ -94,6 +97,7 @@ const plumbingTemplates = allTemplates.filter(
                         href="/trades-we-serve/hvac"
                         variant="secondary"
                         size="lg"
+                        ariaLabel="View all HVAC website templates"
                     >
                         View All HVAC Templates
                         <svg
@@ -115,10 +119,10 @@ const plumbingTemplates = allTemplates.filter(
 
         <!-- Plumbing Templates Section -->
         <section
-            class="py-20 px-4 md:px-8 lg:px-12"
+            class="py-20"
             style="background: linear-gradient(135deg, var(--midnight-navy) 0%, color-mix(in srgb, var(--midnight-navy) 90%, var(--steel-pewter) 10%) 100%);"
         >
-            <div class="max-w-7xl mx-auto">
+            <div class="max-w-7xl mx-auto px-8">
                 <div class="mb-12">
                     <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
                         <span style="color: var(--helios-orange);"
@@ -185,6 +189,7 @@ const plumbingTemplates = allTemplates.filter(
                         href="/trades-we-serve/plumbing"
                         variant="primary"
                         size="lg"
+                        ariaLabel="View all plumbing website templates"
                     >
                         View All Plumbing Templates
                         <svg

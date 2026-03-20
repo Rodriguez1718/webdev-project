@@ -18,42 +18,34 @@ const {
 const titleParts = title.split(highlightWord);
 ---
 
-<section class="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 overflow-hidden">
+<section class="relative py-20 overflow-hidden">
     <!-- Dynamic Background with Geometric Patterns -->
-    <div class="absolute inset-0 bg-gradient-to-br from-[#0A1931] via-[#0F1E3A] to-[#1A2B4D]"></div>
-    
-    <!-- Geometric Background Elements -->
-    <div class="absolute inset-0 overflow-hidden opacity-30">
-        <div class="absolute top-20 left-10 w-32 h-32 border border-[#F48C06]/20 rotate-45 rounded-lg"></div>
-        <div class="absolute top-40 right-20 w-24 h-24 bg-[#99B0BB]/10 rounded-full"></div>
-        <div class="absolute bottom-32 left-1/4 w-40 h-40 border-2 border-[#F48C06]/10 rotate-12 rounded-2xl"></div>
-        <div class="absolute bottom-20 right-1/3 w-28 h-28 bg-gradient-to-br from-[#F48C06]/5 to-[#99B0BB]/5 rounded-full"></div>
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-[#0A1931] via-[#0F1E3A] to-[#1A2B4D]"
+    >
     </div>
 
-    <!-- Floating Particles -->
-    <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute top-1/3 left-1/4 w-2 h-2 bg-[#F48C06] rounded-full animate-float"></div>
-        <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-[#99B0BB] rounded-full animate-float-delayed"></div>
-        <div class="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-[#F48C06] rounded-full animate-float-slow"></div>
-    </div>
-
-    <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="relative z-10 max-w-7xl mx-auto px-8">
         <!-- Header Section -->
         <div class="text-center mb-20 approach-header">
             <span
-        class="text-sm font-semibold tracking-widest uppercase"
-        style="color: var(--helios-orange);"
-      >
-        HOW WE WORK
-      </span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight" >
+                class="text-sm font-semibold tracking-widest uppercase"
+                style="color: var(--helios-orange);"
+            >
+                HOW WE WORK
+            </span>
+            <h2
+                class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight"
+            >
                 {titleParts[0]}
-                <span class="text-[#F48C06] relative inline-block highlight-word">
+                <span
+                    class="text-[#F48C06] relative inline-block highlight-word"
+                >
                     {highlightWord}
                 </span>
                 {titleParts[1]}
             </h2>
-            <p class="text-xl text-[#99B0BB] max-w-4xl mx-auto leading-relaxed">
+            <p class="text-lg text-white max-w-1xl mx-auto leading-relaxed">
                 {description}
             </p>
         </div>
@@ -64,23 +56,37 @@ const titleParts = title.split(highlightWord);
             <div class="xl:col-span-2 space-y-6 approach-steps">
                 <!-- Step 1 -->
                 <div class="approach-step group relative">
-                    <div class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10">
+                    <div
+                        class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10"
+                    >
                         <!-- Step Number -->
                         <div class="flex-shrink-0 relative">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <span class="text-2xl font-bold text-white">01</span>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-2xl font-bold text-white"
+                                    >01</span
+                                >
                             </div>
                             <!-- Connecting Line -->
-                            <div class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"></div>
+                            <div
+                                class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"
+                            >
+                            </div>
                         </div>
-                        
+
                         <!-- Content -->
                         <div class="flex-1 pt-2">
-                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300">
+                            <h3
+                                class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300"
+                            >
                                 Deep Industry Understanding
                             </h3>
-                            <p class="text-[#99B0BB] text-lg leading-relaxed">
-                                We specialize exclusively in contractor and trades businesses, understanding your unique challenges and opportunities better than anyone else.
+                            <p class="text-white text-lg leading-relaxed">
+                                We specialize exclusively in contractor and
+                                trades businesses, understanding your unique
+                                challenges and opportunities better than anyone
+                                else.
                             </p>
                         </div>
                     </div>
@@ -88,23 +94,36 @@ const titleParts = title.split(highlightWord);
 
                 <!-- Step 2 -->
                 <div class="approach-step group relative">
-                    <div class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10">
+                    <div
+                        class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10"
+                    >
                         <!-- Step Number -->
                         <div class="flex-shrink-0 relative">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <span class="text-2xl font-bold text-white">02</span>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-2xl font-bold text-white"
+                                    >02</span
+                                >
                             </div>
                             <!-- Connecting Line -->
-                            <div class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"></div>
+                            <div
+                                class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"
+                            >
+                            </div>
                         </div>
-                        
+
                         <!-- Content -->
                         <div class="flex-1 pt-2">
-                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300">
+                            <h3
+                                class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300"
+                            >
                                 Data-Driven Strategy
                             </h3>
-                            <p class="text-[#99B0BB] text-lg leading-relaxed">
-                                Every decision is backed by analytics and market research, ensuring your investment delivers measurable ROI and sustainable growth.
+                            <p class="text-white text-lg leading-relaxed">
+                                Every decision is backed by analytics and market
+                                research, ensuring your investment delivers
+                                measurable ROI and sustainable growth.
                             </p>
                         </div>
                     </div>
@@ -112,23 +131,36 @@ const titleParts = title.split(highlightWord);
 
                 <!-- Step 3 -->
                 <div class="approach-step group relative">
-                    <div class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10">
+                    <div
+                        class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10"
+                    >
                         <!-- Step Number -->
                         <div class="flex-shrink-0 relative">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <span class="text-2xl font-bold text-white">03</span>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-2xl font-bold text-white"
+                                    >03</span
+                                >
                             </div>
                             <!-- Connecting Line -->
-                            <div class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"></div>
+                            <div
+                                class="absolute top-20 left-1/2 w-0.5 h-12 bg-gradient-to-b from-[#F48C06]/50 to-transparent transform -translate-x-1/2"
+                            >
+                            </div>
                         </div>
-                        
+
                         <!-- Content -->
                         <div class="flex-1 pt-2">
-                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300">
+                            <h3
+                                class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300"
+                            >
                                 Continuous Optimization
                             </h3>
-                            <p class="text-[#99B0BB] text-lg leading-relaxed">
-                                We don't just launch and leave. Our team continuously monitors, tests, and optimizes your digital presence for peak performance.
+                            <p class="text-white text-lg leading-relaxed">
+                                We don't just launch and leave. Our team
+                                continuously monitors, tests, and optimizes your
+                                digital presence for peak performance.
                             </p>
                         </div>
                     </div>
@@ -136,21 +168,31 @@ const titleParts = title.split(highlightWord);
 
                 <!-- Step 4 -->
                 <div class="approach-step group relative">
-                    <div class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10">
+                    <div
+                        class="flex items-start gap-6 p-8 rounded-3xl bg-gradient-to-r from-white/5 to-white/2 backdrop-blur-sm border border-white/10 hover:border-[#F48C06]/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#F48C06]/10"
+                    >
                         <!-- Step Number -->
                         <div class="flex-shrink-0">
-                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <span class="text-2xl font-bold text-white">04</span>
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                            >
+                                <span class="text-2xl font-bold text-white"
+                                    >04</span
+                                >
                             </div>
                         </div>
-                        
+
                         <!-- Content -->
                         <div class="flex-1 pt-2">
-                            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300">
+                            <h3
+                                class="text-2xl font-bold text-white mb-4 group-hover:text-[#F48C06] transition-colors duration-300"
+                            >
                                 Partnership Mindset
                             </h3>
-                            <p class="text-[#99B0BB] text-lg leading-relaxed">
-                                Your success is our success. We build long-term relationships based on trust, transparency, and shared goals.
+                            <p class="text-white text-lg leading-relaxed">
+                                Your success is our success. We build long-term
+                                relationships based on trust, transparency, and
+                                shared goals.
                             </p>
                         </div>
                     </div>
@@ -161,26 +203,47 @@ const titleParts = title.split(highlightWord);
             <div class="xl:col-span-1 space-y-8 approach-sidebar">
                 <!-- Visual Element -->
                 <div class="relative approach-visual">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl group">
+                    <div
+                        class="relative rounded-3xl overflow-hidden shadow-2xl group"
+                    >
                         <img
                             src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
                             alt="Team collaboration"
                             class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent"></div>
-                        
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#0A1931]/90 via-[#0A1931]/20 to-transparent"
+                        >
+                        </div>
+
                         <!-- Overlay Content -->
                         <div class="absolute bottom-6 left-6 right-6">
-                            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                            <div
+                                class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20"
+                            >
                                 <div class="flex items-center gap-3 mb-2">
-                                    <div class="w-10 h-10 rounded-full bg-[#F48C06] flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-[#F48C06] flex items-center justify-center"
+                                    >
+                                        <svg
+                                            class="w-5 h-5 text-white"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
+                                            ></path>
                                         </svg>
                                     </div>
                                     <div>
-                                        <div class="text-xl font-bold text-white">50+</div>
-                                        <div class="text-sm text-[#99B0BB]">Expert Team</div>
+                                        <div
+                                            class="text-xl font-bold text-white"
+                                        >
+                                            50+
+                                        </div>
+                                        <div class="text-sm text-white">
+                                            Expert Team
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -190,30 +253,43 @@ const titleParts = title.split(highlightWord);
 
                 <!-- Stats Cards -->
                 <div class="space-y-4 approach-stats">
-                    <div class="bg-gradient-to-br from-[#F48C06]/10 to-[#F48C06]/5 rounded-2xl p-6 border border-[#F48C06]/20">
-                        <div class="text-3xl font-bold text-[#F48C06] mb-2">98%</div>
-                        <div class="text-white font-medium mb-1">Client Satisfaction</div>
-                        <div class="text-[#99B0BB] text-sm">Based on project outcomes</div>
+                    <div
+                        class="bg-gradient-to-br from-[#F48C06]/10 to-[#F48C06]/5 rounded-2xl p-6 border border-[#F48C06]/20"
+                    >
+                        <div class="text-3xl font-bold text-[#F48C06] mb-2">
+                            98%
+                        </div>
+                        <div class="text-white font-medium mb-1">
+                            Client Satisfaction
+                        </div>
+                        <div class="text-white text-sm">
+                            Based on project outcomes
+                        </div>
                     </div>
-                    
-                    <div class="bg-gradient-to-br from-[#99B0BB]/10 to-[#99B0BB]/5 rounded-2xl p-6 border border-[#99B0BB]/20">
-                        <div class="text-3xl font-bold text-[#99B0BB] mb-2">5+</div>
-                        <div class="text-white font-medium mb-1">Years Experience</div>
-                        <div class="text-[#99B0BB] text-sm">In contractor marketing</div>
+
+                    <div
+                        class="bg-gradient-to-br from-[#99B0BB]/10 to-[#99B0BB]/5 rounded-2xl p-6 border border-[#99B0BB]/20"
+                    >
+                        <div class="text-3xl font-bold text-[#99B0BB] mb-2">
+                            5+
+                        </div>
+                        <div class="text-white font-medium mb-1">
+                            Years Experience
+                        </div>
+                        <div class="text-white text-sm">
+                            In contractor marketing
+                        </div>
                     </div>
                 </div>
 
                 <!-- CTA Section -->
                 <div class="approach-cta">
-                    <div class="bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-8 border border-white/10 backdrop-blur-sm">
-                        
-                        <Button href="/contact" variant="primary" size="lg">
-                            Start Your Journey
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </Button>
-                    </div>
+                    <Button href="/contact" variant="primary" size="lg" fullWidth>
+                        Start Your Journey
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </Button>
                 </div>
             </div>
         </div>
@@ -221,102 +297,108 @@ const titleParts = title.split(highlightWord);
 </section>
 
 <script>
-// Enhanced Intersection Observer for staggered fade-in animations
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-};
+    // Enhanced Intersection Observer for staggered fade-in animations
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px",
+    };
 
-/**
- * Letter-by-Letter Fade-In Animation Script
- * This script creates a staggered fade-in effect where each letter
- * of the title appears one by one with a smooth opacity transition.
- */
-function animateTitle(selector = '#approach-title', delayPerLetter = 80, duration = 600): void {
-    const titleElement = document.querySelector(selector) as HTMLElement;
-    if (!titleElement) {
-        console.warn(`Element with selector "${selector}" not found`);
-        return;
-    }
-
-    // Get all child nodes
-    const children = Array.from(titleElement.childNodes);
-    
-    // Clear the element
-    titleElement.innerHTML = '';
-    let charIndex = 0;
-
-    // Process each child node
-    children.forEach((child) => {
-        if (child.nodeType === Node.TEXT_NODE) {
-            // Handle text nodes
-            const text = child.textContent || '';
-            const span = document.createElement('span');
-            
-            text.split('').forEach((char) => {
-                const charSpan = document.createElement('span');
-                charSpan.textContent = char === ' ' ? '\u00A0' : char;
-                charSpan.style.opacity = '0';
-                charSpan.style.display = 'inline-block';
-                charSpan.style.animation = `fadeInLetter ${duration}ms ease-out ${charIndex * delayPerLetter}ms forwards`;
-                charSpan.className = 'letter-fade';
-                span.appendChild(charSpan);
-                charIndex++;
-            });
-            
-            titleElement.appendChild(span);
-        } else if (child.nodeType === Node.ELEMENT_NODE) {
-            // Handle element nodes (like spans)
-            const element = child as HTMLElement;
-            const text = element.textContent || '';
-            const wrapper = document.createElement('span');
-            
-            // Preserve original element's classes and attributes
-            wrapper.className = element.className;
-            if (element.style.cssText) {
-                wrapper.style.cssText = element.style.cssText;
-            }
-            
-            // Handle SVG elements separately
-            const svg = element.querySelector('svg');
-            
-            text.split('').forEach((char) => {
-                const charSpan = document.createElement('span');
-                charSpan.textContent = char === ' ' ? '\u00A0' : char;
-                charSpan.style.opacity = '0';
-                charSpan.style.display = 'inline-block';
-                charSpan.style.animation = `fadeInLetter ${duration}ms ease-out ${charIndex * delayPerLetter}ms forwards`;
-                charSpan.className = 'letter-fade highlight-letter';
-                wrapper.appendChild(charSpan);
-                charIndex++;
-            });
-            
-            // Add SVG after letters if it exists
-            if (svg) {
-                const svgClone = svg.cloneNode(true) as SVGElement;
-                svgClone.style.opacity = '0';
-                svgClone.style.animation = `fadeInSVG ${duration}ms ease-out ${charIndex * delayPerLetter + 200}ms forwards`;
-                wrapper.appendChild(svgClone);
-            }
-            
-            titleElement.appendChild(wrapper);
+    /**
+     * Letter-by-Letter Fade-In Animation Script
+     * This script creates a staggered fade-in effect where each letter
+     * of the title appears one by one with a smooth opacity transition.
+     */
+    function animateTitle(
+        selector = "#approach-title",
+        delayPerLetter = 80,
+        duration = 600,
+    ): void {
+        const titleElement = document.querySelector(selector) as HTMLElement;
+        if (!titleElement) {
+            console.warn(`Element with selector "${selector}" not found`);
+            return;
         }
-    });
 
-    // Animate description after title
-    const description = document.querySelector('.approach-description') as HTMLElement;
-    if (description) {
-        description.style.opacity = '0';
-        description.style.animation = `fadeInUp ${duration}ms ease-out ${charIndex * delayPerLetter + 400}ms forwards`;
+        // Get all child nodes
+        const children = Array.from(titleElement.childNodes);
+
+        // Clear the element
+        titleElement.innerHTML = "";
+        let charIndex = 0;
+
+        // Process each child node
+        children.forEach((child) => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                // Handle text nodes
+                const text = child.textContent || "";
+                const span = document.createElement("span");
+
+                text.split("").forEach((char) => {
+                    const charSpan = document.createElement("span");
+                    charSpan.textContent = char === " " ? "\u00A0" : char;
+                    charSpan.style.opacity = "0";
+                    charSpan.style.display = "inline-block";
+                    charSpan.style.animation = `fadeInLetter ${duration}ms ease-out ${charIndex * delayPerLetter}ms forwards`;
+                    charSpan.className = "letter-fade";
+                    span.appendChild(charSpan);
+                    charIndex++;
+                });
+
+                titleElement.appendChild(span);
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                // Handle element nodes (like spans)
+                const element = child as HTMLElement;
+                const text = element.textContent || "";
+                const wrapper = document.createElement("span");
+
+                // Preserve original element's classes and attributes
+                wrapper.className = element.className;
+                if (element.style.cssText) {
+                    wrapper.style.cssText = element.style.cssText;
+                }
+
+                // Handle SVG elements separately
+                const svg = element.querySelector("svg");
+
+                text.split("").forEach((char) => {
+                    const charSpan = document.createElement("span");
+                    charSpan.textContent = char === " " ? "\u00A0" : char;
+                    charSpan.style.opacity = "0";
+                    charSpan.style.display = "inline-block";
+                    charSpan.style.animation = `fadeInLetter ${duration}ms ease-out ${charIndex * delayPerLetter}ms forwards`;
+                    charSpan.className = "letter-fade highlight-letter";
+                    wrapper.appendChild(charSpan);
+                    charIndex++;
+                });
+
+                // Add SVG after letters if it exists
+                if (svg) {
+                    const svgClone = svg.cloneNode(true) as SVGElement;
+                    svgClone.style.opacity = "0";
+                    svgClone.style.animation = `fadeInSVG ${duration}ms ease-out ${charIndex * delayPerLetter + 200}ms forwards`;
+                    wrapper.appendChild(svgClone);
+                }
+
+                titleElement.appendChild(wrapper);
+            }
+        });
+
+        // Animate description after title
+        const description = document.querySelector(
+            ".approach-description",
+        ) as HTMLElement;
+        if (description) {
+            description.style.opacity = "0";
+            description.style.animation = `fadeInUp ${duration}ms ease-out ${charIndex * delayPerLetter + 400}ms forwards`;
+        }
     }
-}
 
-// Inject CSS animations if not already present
-function injectAnimationStyles(): void {
-    if (!document.querySelector('style[data-letter-fade]')) {
-        const style = document.createElement('style');
-        style.setAttribute('data-letter-fade', 'true');
-        style.textContent = `
+    // Inject CSS animations if not already present
+    function injectAnimationStyles(): void {
+        if (!document.querySelector("style[data-letter-fade]")) {
+            const style = document.createElement("style");
+            style.setAttribute("data-letter-fade", "true");
+            style.textContent = `
             @keyframes fadeInLetter {
                 from {
                     opacity: 0;
@@ -362,163 +444,206 @@ function injectAnimationStyles(): void {
                 color: #F48C06 !important;
             }
         `;
-        document.head.appendChild(style);
-    }
-}
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            
-            // Special handling for header animation
-            if (entry.target.classList.contains('approach-header')) {
-                setTimeout(() => {
-                    injectAnimationStyles();
-                    animateTitle('#approach-title', 80, 600);
-                }, 200);
-            }
-            
-            // Special handling for staggered step animations
-            if (entry.target.classList.contains('approach-steps')) {
-                const steps = entry.target.querySelectorAll('.approach-step');
-                steps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.classList.add('animate-in');
-                    }, index * 150);
-                });
-            }
+            document.head.appendChild(style);
         }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-in");
+
+                // Special handling for header animation
+                if (entry.target.classList.contains("approach-header")) {
+                    setTimeout(() => {
+                        injectAnimationStyles();
+                        animateTitle("#approach-title", 80, 600);
+                    }, 200);
+                }
+
+                // Special handling for staggered step animations
+                if (entry.target.classList.contains("approach-steps")) {
+                    const steps =
+                        entry.target.querySelectorAll(".approach-step");
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add("animate-in");
+                        }, index * 150);
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Initialize animations when DOM is loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const elementsToAnimate = document.querySelectorAll(
+            ".approach-header, .approach-steps, .approach-visual, .approach-stats, .approach-cta",
+        );
+
+        elementsToAnimate.forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Add floating animation to particles
+        const particles = document.querySelectorAll('[class*="animate-float"]');
+        particles.forEach((particle, index) => {
+            const htmlParticle = particle as HTMLElement;
+            htmlParticle.style.animationDelay = `${index * 0.5}s`;
+        });
     });
-}, observerOptions);
-
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll(
-        '.approach-header, .approach-steps, .approach-visual, .approach-stats, .approach-cta'
-    );
-    
-    elementsToAnimate.forEach((el) => {
-        observer.observe(el);
-    });
-
-    // Add floating animation to particles
-    const particles = document.querySelectorAll('[class*="animate-float"]');
-    particles.forEach((particle, index) => {
-    const htmlParticle = particle as HTMLElement;
-    htmlParticle.style.animationDelay = `${index * 0.5}s`;
-});
-
-});
 </script>
 
 <style>
-/* Base animation styles */
-.approach-header,
-.approach-steps,
-.approach-visual,
-.approach-stats,
-.approach-cta,
-.approach-step {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Staggered delays for different sections */
-.approach-header { transition-delay: 0.1s; }
-.approach-visual { transition-delay: 0.3s; }
-.approach-stats { transition-delay: 0.4s; }
-.approach-cta { transition-delay: 0.5s; }
-
-/* Step-specific animations */
-.approach-step {
-    transform: translateX(-30px) translateY(20px);
-    transition-delay: 0s; /* Controlled by JavaScript */
-}
-
-/* Animate-in state */
-.animate-in {
-    opacity: 1;
-    transform: translateY(0) translateX(0);
-}
-
-/* Floating particle animations */
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-10px) rotate(120deg); }
-    66% { transform: translateY(5px) rotate(240deg); }
-}
-
-@keyframes float-delayed {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-15px) scale(1.2); }
-}
-
-@keyframes float-slow {
-    0%, 100% { transform: translateY(0px) translateX(0px); }
-    25% { transform: translateY(-8px) translateX(4px); }
-    50% { transform: translateY(-12px) translateX(-2px); }
-    75% { transform: translateY(-6px) translateX(6px); }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-    animation: float-delayed 4s ease-in-out infinite;
-}
-
-.animate-float-slow {
-    animation: float-slow 8s ease-in-out infinite;
-}
-
-/* Enhanced hover effects */
-.approach-step:hover {
-    transform: translateY(-5px);
-}
-
-.approach-step .bg-gradient-to-r:hover {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-}
-
-/* Smooth gradient animations for step numbers */
-.approach-step .bg-gradient-to-br {
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
-}
-
-@keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-/* Responsive adjustments */
-@media (max-width: 1279px) {
+    /* Base animation styles */
+    .approach-header,
+    .approach-steps,
+    .approach-visual,
+    .approach-stats,
+    .approach-cta,
     .approach-step {
-        transform: translateY(30px);
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-}
 
-/* Loading state improvements */
-.approach-header h2 {
-    background: linear-gradient(135deg, #ffffff 0%, #99B0BB 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: text-shimmer 3s ease-in-out infinite;
-}
+    /* Staggered delays for different sections */
+    .approach-header {
+        transition-delay: 0.1s;
+    }
+    .approach-visual {
+        transition-delay: 0.3s;
+    }
+    .approach-stats {
+        transition-delay: 0.4s;
+    }
+    .approach-cta {
+        transition-delay: 0.5s;
+    }
 
-@keyframes text-shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
+    /* Step-specific animations */
+    .approach-step {
+        transform: translateX(-30px) translateY(20px);
+        transition-delay: 0s; /* Controlled by JavaScript */
+    }
 
-.approach-header h2 span {
-    -webkit-text-fill-color: #F48C06 !important;
-    background: none !important;
-    animation: none !important;
-}
+    /* Animate-in state */
+    .animate-in {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+    }
+
+    /* Floating particle animations */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+            transform: translateY(-10px) rotate(120deg);
+        }
+        66% {
+            transform: translateY(5px) rotate(240deg);
+        }
+    }
+
+    @keyframes float-delayed {
+        0%,
+        100% {
+            transform: translateY(0px) scale(1);
+        }
+        50% {
+            transform: translateY(-15px) scale(1.2);
+        }
+    }
+
+    @keyframes float-slow {
+        0%,
+        100% {
+            transform: translateY(0px) translateX(0px);
+        }
+        25% {
+            transform: translateY(-8px) translateX(4px);
+        }
+        50% {
+            transform: translateY(-12px) translateX(-2px);
+        }
+        75% {
+            transform: translateY(-6px) translateX(6px);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float-delayed 4s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+        animation: float-slow 8s ease-in-out infinite;
+    }
+
+    /* Enhanced hover effects */
+    .approach-step:hover {
+        transform: translateY(-5px);
+    }
+
+    .approach-step .bg-gradient-to-r:hover {
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.05)
+        );
+    }
+
+    /* Smooth gradient animations for step numbers */
+    .approach-step .bg-gradient-to-br {
+        background-size: 200% 200%;
+        animation: gradient-shift 3s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1279px) {
+        .approach-step {
+            transform: translateY(30px);
+        }
+    }
+
+    /* Loading state improvements */
+    .approach-header h2 {
+        background: linear-gradient(135deg, #ffffff 0%, #99b0bb 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 200%;
+        animation: text-shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes text-shimmer {
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .approach-header h2 span {
+        -webkit-text-fill-color: #f48c06 !important;
+        background: none !important;
+        animation: none !important;
+    }
 </style>

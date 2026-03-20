@@ -80,21 +80,28 @@ const baseClasses = `w-full px-4 py-3 rounded-lg border transition-all duration-
             class={`${baseClasses} resize-none`}
         />
     ) : type === "select" ? (
-        <select id={id} name={name} required={required} class={baseClasses}>
-            <option
-                value=""
-                disabled
-                selected
-                class="text-[#0A1931] bg-[#0a1931]"
-            >
-                {placeholder || "Select an option"}
-            </option>
-            {options.map((option) => (
-                <option value={option.value} class="text-white bg-[#0a1931]">
-                    {option.label}
+        <div class="relative">
+            <select id={id} name={name} required={required} class={`${baseClasses} appearance-none pr-10`}>
+                <option
+                    value=""
+                    disabled
+                    selected
+                    class="text-white/80 bg-[#0a1931]"
+                >
+                    {placeholder || "Select an option"}
                 </option>
-            ))}
-        </select>
+                {options.map((option) => (
+                    <option value={option.value} class="text-white bg-[#0a1931]">
+                        {option.label}
+                    </option>
+                ))}
+            </select>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <svg class="w-5 h-5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </div>
     ) : (
         <input
             type={type}

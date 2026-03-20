@@ -3,14 +3,15 @@
 // Displays key performance indicators in a minimal, non-redundant format
 
 const metrics = [
-  { number: "2,500+", label: "Websites Built", icon: "globe" },
-  { number: "150%", label: "Lead Increase", icon: "chart" },
-  { number: "4.9/5", label: "Client Rating", icon: "star" },
+  { number: "2500", suffix: "+", label: "Websites Built", icon: "globe" },
+  { number: "150", suffix: "%", label: "Lead Increase", icon: "chart" },
+  { number: "4.9", suffix: "/5", label: "Client Rating", icon: "star" },
 ];
 
 const getIcon = (type: string) => {
   const icons: Record<string, string> = {
-    globe: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6",
+    globe:
+      "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6",
     chart: "M13 7h8m0 0v8m0-8L5.586 19.414M7 13v8m0 0H3m4 0v-4",
     star: "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z",
   };
@@ -18,44 +19,80 @@ const getIcon = (type: string) => {
 };
 ---
 
-<section class="py-12 md:py-16 px-6 bg-parchment border-y border-[#E5E7EB] relative overflow-hidden">
-  <div class="absolute inset-0 bg-linear-to-r from-[#F48C06]/5 via-transparent to-[#1B4D7E]/5 -z-10"></div>
+<section
+  class="py-12 md:py-16 px-6 bg-parchment border-y border-[#E5E7EB] relative overflow-hidden results-infographic"
+>
+  <div
+    class="absolute inset-0 bg-linear-to-r from-[#F48C06]/5 via-transparent to-[#1B4D7E]/5 -z-10"
+  >
+  </div>
 
   <div class="container-custom">
     <!-- Header -->
     <div class="text-center mb-10 md:mb-12">
-      <span class="text-sm font-semibold tracking-widest uppercase" style="color: var(--helios-orange);">PROVEN RESULTS</span>
+      <span
+        class="text-sm font-semibold tracking-widest uppercase"
+        style="color: var(--helios-orange);">PROVEN RESULTS</span
+      >
       <h2 class="heading-primary mt-3 mb-2">Real Impact, Real Numbers</h2>
-      <p class="text-lg text-machinist max-w-3xl mx-auto mt-4">
-        Join thousands of contractors transforming their digital presence with BuildPro.
+      <p class="text-lg text-[#0A1931] max-w-3xl mx-auto mt-4">
+        Join thousands of contractors transforming their digital presence with
+        BuildPro.
       </p>
     </div>
 
     <!-- Metrics Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {metrics.map((metric, index) => (
-        <div class="group relative" style={`animation-delay: ${index * 0.1}s; animation: fadeIn 0.5s ease-out forwards; opacity: 0;`}>
-          <div class="relative bg-white rounded-xl border border-[#E5E7EB] transition-all duration-300 overflow-hidden p-6 md:p-8 hover:border-[#F48C06] hover:shadow-lg">
-            <div class="absolute inset-0 bg-linear-to-br from-[#F48C06]/5 to-[#1B4D7E]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            <div class="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-[#F48C06] to-[#1B4D7E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+      {
+        metrics.map((metric, index) => (
+          <div
+            class="group relative"
+            style={`animation-delay: ${index * 0.1}s; animation: fadeIn 0.5s ease-out forwards; opacity: 0;`}
+          >
+            <div class="bg-[var(--midnight-navy)] hover:bg-[var(--helios-orange)] p-8 rounded-3xl transition-all duration-400 relative overflow-hidden border border-white/10 min-h-[280px] flex flex-col hover:shadow-[0_15px_35px_rgba(244,140,6,0.3)]">
+              <div class="flex justify-between items-start mb-8 flex-1">
+                <h4 class="text-white text-xl font-semibold leading-tight max-w-[60%] transition-colors duration-400">
+                  {metric.label}
+                </h4>
+                <div class="text-[var(--steel-pewter)] opacity-60 transition-all duration-400 group-hover:text-white group-hover:opacity-100 group-hover:scale-105">
+                  <svg
+                    class="w-12 h-12 text-white stroke-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={getIcon(metric.icon)}
+                    />
+                  </svg>
+                </div>
+              </div>
 
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110" style="background: linear-gradient(135deg, var(--helios-orange), #ff6b35);">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={getIcon(metric.icon)} />
-              </svg>
-            </div>
+              <div class="h-px bg-[var(--steel-pewter)] mb-8 w-full opacity-30 transition-all duration-400 group-hover:bg-white group-hover:opacity-50" />
 
-            <!-- Content -->
-            <div class="text-4xl md:text-5xl font-extrabold text-[#0A1931] mb-2 group-hover:text-[#F48C06] transition-colors duration-300">
-              {metric.number}
+              <div class="mt-auto">
+                <div
+                  class="text-6xl font-extrabold text-white leading-none mb-2 flex items-baseline transition-colors duration-400"
+                  data-target={metric.number}
+                  data-suffix={metric.suffix}
+                >
+                  0
+                  <span class="text-white text-5xl ml-1 transition-colors duration-400">
+                    {metric.suffix}
+                  </span>
+                </div>
+                <p class="text-[var(--steel-pewter)] text-base font-medium leading-tight transition-colors duration-400 group-hover:text-white">
+                  {metric.label}
+                </p>
+              </div>
             </div>
-            <p class="text-sm md:text-base font-semibold text-machinist">
-              {metric.label}
-            </p>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
@@ -67,3 +104,78 @@ const getIcon = (type: string) => {
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Counter animation function
+    function animateCounter(
+      element: HTMLElement,
+      target: number,
+      suffix: string,
+      duration: number,
+    ) {
+      let start = 0;
+      const increment = target / (duration / 16);
+
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          const currentValue =
+            target % 1 !== 0
+              ? start.toFixed(1)
+              : Math.floor(start).toLocaleString();
+          element.innerHTML =
+            currentValue +
+            '<span class="text-white text-5xl ml-1 transition-colors duration-400">' +
+            suffix +
+            "</span>";
+          requestAnimationFrame(updateCounter);
+        } else {
+          const finalValue =
+            target % 1 !== 0 ? target.toFixed(1) : target.toLocaleString();
+          element.innerHTML =
+            finalValue +
+            '<span class="text-white text-5xl ml-1 transition-colors duration-400">' +
+            suffix +
+            "</span>";
+        }
+      }
+
+      updateCounter();
+    }
+
+    // Intersection Observer for counter animation
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll("[data-target]");
+
+            counters.forEach(function (counter) {
+              const targetAttr = counter.getAttribute("data-target");
+              const suffixAttr = counter.getAttribute("data-suffix");
+
+              if (targetAttr && !counter.classList.contains("animated")) {
+                const target = parseFloat(targetAttr);
+                const suffix = suffixAttr || "";
+
+                counter.classList.add("animated");
+                animateCounter(counter as HTMLElement, target, suffix, 2000);
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    // Observe the results section specifically
+    const resultsSection = document.querySelector(".results-infographic");
+    if (resultsSection) {
+      observer.observe(resultsSection);
+    }
+  });
+</script>

@@ -34,7 +34,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                 {tradeName}
                 <span style={`color: ${accentColor};`}>Website Templates</span>
             </h2>
-            <p class="text-lg md:text-xl text-[#7E7E7E] max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-[#0A1931] max-w-3xl mx-auto">
                 Professional, conversion-optimized templates designed
                 specifically for {tradeName.toLowerCase()} contractors and service
                 providers.
@@ -79,7 +79,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                                 </h3>
 
                                 {/* Description */}
-                                <p class="text-[#7E7E7E] text-base leading-relaxed mb-6">
+                                <p class="text-[#0A1931] text-base leading-relaxed mb-6">
                                     {template.data.description}
                                 </p>
 
@@ -114,7 +114,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                 </div>
             ) : (
                 <div class="text-center py-12">
-                    <p class="text-xl text-[#7E7E7E]">
+                    <p class="text-xl text-white">
                         No templates available yet. Check back soon!
                     </p>
                 </div>
@@ -127,6 +127,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                 href="/contact"
                 variant={trade === "hvac" ? "secondary" : "primary"}
                 size="lg"
+                ariaLabel={`Get a custom ${tradeName} website design`}
             >
                 Get Your Custom {tradeName} Website
                 <svg

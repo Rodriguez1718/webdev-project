@@ -55,19 +55,14 @@ const getIcon = (type: string) => {
             </p>
         </div>
 
-        <!-- Certification Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {
-                certifications.map((cert, index) => (
-                    <div 
-                        id={`cert-${cert.id}`}
-                        class="group relative bg-white border-2 border-[var(--steel-pewter)]/30 rounded-2xl p-6 hover:border-[var(--helios-orange)] transition-all duration-300 hover:shadow-[0_8px_30px_rgba(244,140,6,0.15)] hover:-translate-y-1"
-                    >
-                        <!-- Icon -->
-                        <div class="mb-4">
-                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--helios-orange)] to-[#ff6b35] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+            <!-- Right: Certification Badges -->
+            <div class="flex gap-3 md:gap-4 flex-nowrap">
+                {
+                    certifications.map((cert) => (
+                        <div class="group bg-white border border-[#99B0BB] rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-[#F48C06] px-5 md:px-6 py-4 flex items-center gap-3 min-h-[80px]">
+                            <div class="w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center shrink-0 bg-gradient-to-br from-[var(--helios-orange)] to-[#ff6b35] transition-all duration-300 group-hover:scale-110">
                                 <svg
-                                    class="w-7 h-7 text-white"
+                                    class="w-5 h-5 md:w-6 md:h-6 text-white"
                                     fill="none"
                                     stroke="currentColor"
                                     stroke-width="2"
@@ -80,19 +75,12 @@ const getIcon = (type: string) => {
                                     />
                                 </svg>
                             </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div>
-                            <h3 class="text-xl font-bold text-[var(--midnight-navy)] mb-2 group-hover:text-[var(--helios-orange)] transition-colors duration-300">
-                                {cert.name}
-                            </h3>
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-2xl font-extrabold text-[var(--helios-orange)]">
-                                    {cert.stat}
+                            <div class="flex flex-col gap-1 flex-1">
+                                <span class="text-sm md:text-base font-bold text-[#0A1931] leading-none transition-colors duration-300 group-hover:text-[#F48C06]">
+                                    {cert.name}
                                 </span>
-                                <span class="text-sm text-[var(--machinist)] group-hover:text-[var(--midnight-navy)] transition-colors duration-300">
-                                    {cert.label}
+                                <span class="text-xs md:text-sm text-[#0A1931] leading-none transition-colors duration-300 group-hover:text-[#F48C06]">
+                                    {cert.stat} {cert.label}
                                 </span>
                             </div>
                         </div>
