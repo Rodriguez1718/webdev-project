@@ -556,10 +556,102 @@ ready(() => {
   });
   
   animate("call-banner-subtext", {
-    from:      "fade-left",
+    from:      "fade-up",
     delay:     200,
     duration:  700,
     distance:  40,
+    threshold: 0.15,
+    once:      true,
+  });
+
+//--------------------------------------------OurWork.astro
+  animate("our-work-tag", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("our-work-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("our-work-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("hvac-section-title", {
+    from:      "fade-left",
+    delay:     0,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("hvac-section-desc", {
+    from:      "fade-left",
+    delay:     100,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("hvac-templates-grid", {
+    from:      "fade-up",
+    delay:     200,
+    duration:  800,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("plumbing-section-title", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("plumbing-section-desc", {
+    from:      "fade-right",
+    delay:     100,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("plumbing-templates-grid", {
+    from:      "fade-up",
+    delay:     200,
+    duration:  800,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("our-work-cta", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
     threshold: 0.15,
     once:      true,
   });

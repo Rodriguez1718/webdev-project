@@ -19,15 +19,16 @@ const plumbingTemplates = allTemplates.filter(
         <!-- Section Header -->
         <div class="text-center mb-16">
             <span
+                id="our-work-tag"
                 class="text-sm font-semibold tracking-widest uppercase"
                 style="color: var(--helios-orange);"
             >
                 FEATURED WORK
             </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4">
+            <h2 id="our-work-title" class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4">
                 Our <span style="color: var(--helios-orange);">Works</span>
             </h2>
-            <p class="text-lg text-[#0A1931] max-w-4xl mx-auto">
+            <p id="our-work-desc" class="text-lg text-[#0A1931] max-w-4xl mx-auto">
                 Explore our portfolio of professional websites designed for HVAC
                 and plumbing contractors.
             </p>
@@ -36,15 +37,15 @@ const plumbingTemplates = allTemplates.filter(
         <!-- HVAC Section -->
         <div class="mb-20">
             <div class="mb-8">
-                <h3 class="text-3xl md:text-4xl font-bold text-[#0A1931] mb-3">
+                <h3 id="hvac-section-title" class="text-3xl md:text-4xl font-bold text-[#0A1931] mb-3">
                     <span style="color: var(--midnight-navy);">HVAC</span> Templates
                 </h3>
-                <p class="text-base text-[#0A1931]">
+                <p id="hvac-section-desc" class="text-base text-[#0A1931]">
                     Professional website designs tailored for HVAC contractors.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div id="hvac-templates-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {
                     hvacTemplates.length > 0 ? (
                         hvacTemplates
@@ -97,15 +98,15 @@ const plumbingTemplates = allTemplates.filter(
         <!-- Plumbing Section -->
         <div>
             <div class="mb-8">
-                <h3 class="text-3xl md:text-4xl font-bold text-[#0A1931] mb-3">
+                <h3 id="plumbing-section-title" class="text-3xl md:text-4xl font-bold text-[#0A1931] mb-3">
                     <span style="color: var(--helios-orange);">Plumbing</span> <span style="color: var(--helios-orange);">Templates</span>
                 </h3>
-                <p class="text-base text-[#0A1931]">
+                <p id="plumbing-section-desc" class="text-base text-[#0A1931]">
                     Custom website solutions designed for plumbing businesses.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div id="plumbing-templates-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {
                     plumbingTemplates.length > 0 ? (
                         plumbingTemplates
@@ -156,7 +157,7 @@ const plumbingTemplates = allTemplates.filter(
         </div>
 
         <!-- View All Button -->
-        <div class="text-center mt-16">
+        <div id="our-work-cta" class="text-center mt-16">
             <Button
                 href="/our-work"
                 variant="primary"
