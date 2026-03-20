@@ -2,7 +2,7 @@
 title: "24/7 Expert Plumbing Solutions"
 trade: "Plumbing"
 description: "A high-impact landing page specifically built for emergency plumbing calls with high-visibility phone numbers and trust signals."
-thumbnail: "/images/plumbing3.png"
+thumbnail: "/images/plumbing3.avif"
 liveDemoUrl: "https://plumbing-template-3-wheat.vercel.app/"
 mainSiteUrl: "https://plumbing-template-3-wheat.vercel.app/"
 category: "Landing Page"

@@ -2,7 +2,7 @@
 title: "Modern Residential Plumbing"
 trade: "Plumbing"
 description: "A clean, conversion-optimized landing page for residential plumbing services featuring a clear service breakdown and booking CTA."
-thumbnail: "/images/plumbing1.png"
+thumbnail: "/images/plumbing1.avif"
 liveDemoUrl: "https://plumbing-template-1-beta.vercel.app/"
 mainSiteUrl: "https://plumbing-template-1-beta.vercel.app/"
 category: "Landing Page"
