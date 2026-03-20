@@ -210,25 +210,33 @@ import logoImage from "../../assets/logo.avif";
                 style="font-size: 15px;"
                 data-path="/our-work">Our Work</a
             >
-            <a
-                href="/trades-we-serve"
-                class="mobile-nav-item font-primary text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 block px-3 py-2 font-semibold transition-colors duration-200 flex items-center justify-between w-full"
-                style="font-size: 15px;"
-                data-path="/trades-we-serve"
-                id="trades-toggle"
-            >
-                Trades We Serve
-                <svg
-                    class="h-4 w-4 transition-transform duration-200 trades-chevron"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+            <div class="mobile-nav-item-wrapper flex items-center justify-between w-full">
+                <a
+                    href="/trades-we-serve"
+                    class="mobile-nav-item font-primary text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 px-3 py-2 font-semibold transition-colors duration-200 flex-1"
+                    style="font-size: 15px;"
+                    data-path="/trades-we-serve"
                 >
-                    <path
-                        fill-rule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </a>
+                    Trades We Serve
+                </a>
+                <button
+                    type="button"
+                    class="px-3 py-2 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
+                    id="trades-toggle"
+                    aria-label="Toggle trades dropdown"
+                >
+                    <svg
+                        class="h-4 w-4 transition-transform duration-200 trades-chevron"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
             <div
                 class="mobile-trades-dropdown hidden bg-gray-50 border-l-4 border-[#F48C06]"
             >
@@ -392,6 +400,7 @@ import logoImage from "../../assets/logo.avif";
         if (tradesToggle && tradesDropdown) {
             tradesToggle.addEventListener("click", function (e) {
                 e.preventDefault();
+                e.stopPropagation();
                 tradesDropdown.classList.toggle("hidden");
                 if (tradesChevron) {
                     tradesChevron.classList.toggle("rotate-180");
