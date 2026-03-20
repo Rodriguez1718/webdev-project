@@ -44,17 +44,18 @@ const badgeText = trade === "hvac" ? "HVAC" : "PLUMBING";
         <!-- Section Header -->
         <div class="text-center mb-20">
             <span
+                id="trade-features-tag"
                 class="text-sm font-semibold tracking-widest uppercase"
                 style="color: var(--helios-orange);"
             >
                 TRADE SOLUTIONS
             </span>
-            <h2 class="text-3xl md:text-3xl lg:text-5xl font-bold text-[#0A1931] mb-8 leading-tight mt-4 max-w-4xl mx-auto">
+            <h2 id="trade-features-title" class="text-3xl md:text-3xl lg:text-5xl font-bold text-[#0A1931] mb-8 leading-tight mt-4 max-w-4xl mx-auto">
                 {title}
             </h2>
             {
                 subtitle && (
-            <p class="text-lg text-[#0A1931] max-w-3xl mx-auto leading-relaxed">
+            <p id="trade-features-subtitle" class="text-lg text-[#0A1931] max-w-3xl mx-auto leading-relaxed">
                 {subtitle} BuildPro.
             </p>
                 )
@@ -66,7 +67,7 @@ const badgeText = trade === "hvac" ? "HVAC" : "PLUMBING";
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 {
                     benefits.map((benefit, index) => (
-                        <div class="group relative">
+                        <div id={`trade-feature-card-${index + 1}`} class="group relative">
                             <!-- Main Card -->
                             <div class="relative bg-white rounded-3xl p-8 border border-[#99B0BB]/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden">
                                 <!-- Decorative gradient overlay -->

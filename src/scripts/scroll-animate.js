@@ -941,3 +941,87 @@ ready(() => {
     threshold: 0.05,
     once:      true,
   });
+
+//--------------------------------------------TradeFeatures.astro
+  animate("trade-features-tag", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("trade-features-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("trade-features-subtitle", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  // Animate up to 6 feature cards with staggered delays
+  animate("trade-feature-card-1", {
+    from:      "fade-up",
+    delay:     150,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("trade-feature-card-2", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("trade-feature-card-3", {
+    from:      "fade-up",
+    delay:     450,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("trade-feature-card-4", {
+    from:      "fade-up",
+    delay:     600,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("trade-feature-card-5", {
+    from:      "fade-up",
+    delay:     750,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("trade-feature-card-6", {
+    from:      "fade-up",
+    delay:     900,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
