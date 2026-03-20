@@ -33,17 +33,18 @@ const plumbingTemplates = allTemplates.filter(
             <div class="max-w-7xl mx-auto px-8">
                 <div class="mb-12">
                     <h2
+                        id="our-work-hvac-title"
                         class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-4"
                     >
                         <span style="color: var(--midnight-navy);">HVAC</span> Templates
                     </h2>
-                    <p class="text-lg text-[#0A1931] max-w-3xl">
+                    <p id="our-work-hvac-desc" class="text-lg text-[#0A1931] max-w-3xl">
                         Professional website designs tailored for HVAC
                         contractors and service providers.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="our-work-hvac-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {
                         hvacTemplates.length > 0 ? (
                             hvacTemplates
@@ -92,7 +93,7 @@ const plumbingTemplates = allTemplates.filter(
                     }
                 </div>
 
-                <div class="text-center">
+                <div id="our-work-hvac-cta" class="text-center">
                     <Button
                         href="/trades-we-serve/hvac"
                         variant="secondary"
@@ -124,18 +125,18 @@ const plumbingTemplates = allTemplates.filter(
         >
             <div class="max-w-7xl mx-auto px-8">
                 <div class="mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 id="our-work-plumbing-title" class="text-4xl md:text-5xl font-bold text-white mb-4">
                         <span style="color: var(--helios-orange);"
                             >Plumbing</span
                         > Templates
                     </h2>
-                    <p class="text-lg text-white max-w-5xl">
+                    <p id="our-work-plumbing-desc" class="text-lg text-white max-w-5xl">
                         Custom website solutions designed specifically for
                         plumbing businesses and contractors.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div id="our-work-plumbing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {
                         plumbingTemplates.length > 0 ? (
                             plumbingTemplates
@@ -184,7 +185,7 @@ const plumbingTemplates = allTemplates.filter(
                     }
                 </div>
 
-                <div class="text-center">
+                <div id="our-work-plumbing-cta" class="text-center">
                     <Button
                         href="/trades-we-serve/plumbing"
                         variant="primary"

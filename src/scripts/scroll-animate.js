@@ -828,3 +828,78 @@ ready(() => {
 
 
 
+
+//--------------------------------------------our-work.astro (page)
+  animateText("our-work-hvac-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("our-work-hvac-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("our-work-hvac-grid", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("our-work-hvac-cta", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("our-work-plumbing-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("our-work-plumbing-desc", {
+    from:      "fade-right",
+    delay:     200,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("our-work-plumbing-grid", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("our-work-plumbing-cta", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
