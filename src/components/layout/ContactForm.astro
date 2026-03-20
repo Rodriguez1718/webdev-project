@@ -28,7 +28,9 @@ import FormInput from "../ui/FormInput.astro";
                 <!-- Quick Contact Options -->
                 <div class="space-y-4 mb-8">
                     <!-- Phone -->
-                    <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10">
+                    <div
+                        class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10"
+                    >
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
@@ -47,7 +49,11 @@ import FormInput from "../ui/FormInput.astro";
                                 <h3 class="font-bold text-white mb-1 text-lg">
                                     Call Us
                                 </h3>
-                                <p class="text-[#F48C06] font-semibold text-base">(555) 123-4567</p>
+                                <p
+                                    class="text-[#F48C06] font-semibold text-base"
+                                >
+                                    (555) 123-4567
+                                </p>
                                 <p class="text-sm text-white/90 mt-1">
                                     Mon-Fri, 9am-6pm EST
                                 </p>
@@ -56,7 +62,9 @@ import FormInput from "../ui/FormInput.astro";
                     </div>
 
                     <!-- Email -->
-                    <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10">
+                    <div
+                        class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10"
+                    >
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
@@ -72,8 +80,14 @@ import FormInput from "../ui/FormInput.astro";
                                 </svg>
                             </div>
                             <div class="flex-1 min-w-0">
-                                <h3 class="font-bold text-white mb-1 text-lg">Email</h3>
-                                <p class="text-[#F48C06] font-semibold text-base break-all">info@buildpro.com</p>
+                                <h3 class="font-bold text-white mb-1 text-lg">
+                                    Email
+                                </h3>
+                                <p
+                                    class="text-[#F48C06] font-semibold text-base break-all"
+                                >
+                                    info@buildpro.com
+                                </p>
                                 <p class="text-sm text-white/90 mt-1">
                                     Response within 24 hours
                                 </p>
@@ -82,7 +96,9 @@ import FormInput from "../ui/FormInput.astro";
                     </div>
 
                     <!-- Address -->
-                    <div class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10">
+                    <div
+                        class="group relative bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-[#F48C06]/50 transition-all duration-300 hover:bg-white/10"
+                    >
                         <div class="flex items-center gap-4">
                             <div
                                 class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
@@ -101,12 +117,13 @@ import FormInput from "../ui/FormInput.astro";
                                 <h3 class="font-bold text-white mb-1 text-lg">
                                     Office
                                 </h3>
-                                <p class="text-white/90 text-sm">123 Main Street, New York, NY 10001</p>
+                                <p class="text-white/90 text-sm">
+                                    123 Main Street, New York, NY 10001
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- Right Side - Form Card with Glass Morphism -->
@@ -152,6 +169,7 @@ import FormInput from "../ui/FormInput.astro";
                         type="select"
                         id="trade"
                         name="trade"
+                        label="Select Your Trade"
                         placeholder="Select your Trade"
                         options={[
                             { value: "hvac", label: "HVAC" },
