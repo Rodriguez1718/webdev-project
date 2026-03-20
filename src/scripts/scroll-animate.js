@@ -768,8 +768,6 @@ ready(() => {
     once:      true,
   });
 
-});
-
 //--------------------------------------------ResultsInfographic.astro
   animate("results-tag", {
     from:      "fade-up",
@@ -825,6 +823,8 @@ ready(() => {
     threshold: 0.1,
     once:      true,
   });
+
+});
 
 
 
@@ -1023,5 +1023,125 @@ ready(() => {
     duration:  800,
     distance:  80,
     threshold: 0.1,
+    once:      true,
+  });
+
+//--------------------------------------------TemplateGallery.astro
+  animate("template-gallery-tag", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("template-gallery-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("template-gallery-desc", {
+    from:      "fade-up",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  // Animate up to 9 template cards with staggered delays (3x3 grid)
+  animate("template-card-1", {
+    from:      "fade-up",
+    delay:     150,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-2", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-3", {
+    from:      "fade-up",
+    delay:     450,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-4", {
+    from:      "fade-up",
+    delay:     600,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-5", {
+    from:      "fade-up",
+    delay:     750,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-6", {
+    from:      "fade-up",
+    delay:     900,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-7", {
+    from:      "fade-up",
+    delay:     1050,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-8", {
+    from:      "fade-up",
+    delay:     1200,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("template-card-9", {
+    from:      "fade-up",
+    delay:     1350,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+  
+  animate("template-gallery-cta", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
     once:      true,
   });

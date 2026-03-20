@@ -25,16 +25,17 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
         <!-- Section Header -->
         <div class="text-center mb-16">
             <span
+                id="template-gallery-tag"
                 class="text-sm font-semibold tracking-widest uppercase"
                 style="color: var(--helios-orange);"
             >
                 TEMPLATES
             </span>
-            <h2 class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4">
+            <h2 id="template-gallery-title" class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4">
                 {tradeName}
                 <span style={`color: ${accentColor};`}>Website Templates</span>
             </h2>
-            <p class="text-lg text-[#0A1931] max-w-3xl mx-auto">
+            <p id="template-gallery-desc" class="text-lg text-[#0A1931] max-w-3xl mx-auto">
                 Professional, conversion-optimized templates designed
                 specifically for {tradeName.toLowerCase()} contractors and service
                 providers.
@@ -45,8 +46,8 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
         {
             tradeTemplates.length > 0 ? (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    {tradeTemplates.map((template) => (
-                        <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#99B0BB]/10 overflow-hidden">
+                    {tradeTemplates.map((template, index) => (
+                        <div id={`template-card-${index + 1}`} class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#99B0BB]/10 overflow-hidden">
                             {/* Template Image */}
                             <div class="relative h-64 overflow-hidden bg-gray-100">
                                 <img
@@ -122,7 +123,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
         }
 
         <!-- CTA Button -->
-        <div class="text-center">
+        <div id="template-gallery-cta" class="text-center">
             <Button
                 href="/contact"
                 variant={trade === "hvac" ? "secondary" : "primary"}
