@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
+import logoImage from "../../images/logo.avif";
 ---
 
 <nav
@@ -13,9 +15,11 @@ import Button from "../ui/Button.astro";
                     href="/"
                     class="font-primary font-bold text-2xl navbar-logo transition-colors duration-200 flex items-center gap-3"
                 >
-                    <img
-                        src="/images/logo.avif"
+                    <Image
+                        src={logoImage}
                         alt="BuildPro Logo"
+                        width={84}
+                        height={84}
                         class="w-12 h-12 rounded"
                     />
                     <div>
