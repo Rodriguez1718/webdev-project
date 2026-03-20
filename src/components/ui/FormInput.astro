@@ -86,7 +86,6 @@ const baseClasses = `w-full px-4 py-3 rounded-lg border transition-all duration-
                 name={name}
                 required={required}
                 class={`${baseClasses} appearance-none pr-10`}
-                aria-label={!label ? `Select ${name}` : undefined}
             >
                 <option
                     value=""
@@ -111,7 +110,6 @@ const baseClasses = `w-full px-4 py-3 rounded-lg border transition-all duration-
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
-                    aria-hidden="true"
                 >
                     <path
                         stroke-linecap="round"
