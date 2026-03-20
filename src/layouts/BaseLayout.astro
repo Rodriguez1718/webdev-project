@@ -72,6 +72,11 @@ const {
 			/* Prevent layout shift */
 			html {
 				scroll-behavior: auto;
+				overflow-x: hidden;
+			}
+
+			body {
+				overflow-x: hidden;
 			}
 
 			* {
@@ -82,7 +87,7 @@ const {
 		<title>{title}</title>
 	</head>
 	<body
-		class="min-h-screen flex flex-col font-primary"
+		class="min-h-screen flex flex-col font-primary overflow-x-hidden"
 		style="font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;"
 	>
 		<Navbar />

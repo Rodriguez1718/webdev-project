@@ -527,19 +527,19 @@ ready(() => {
   });
   
   animate("trade-hvac", {
-    from:      "fade-right",
+    from:      "fade-up",
     delay:     0,
     duration:  800,
-    distance:  800,
+    distance:  100,
     threshold: 0.15,
     once:      true,
   });
   
   animate("trade-plumbing", {
-    from:      "fade-left",
+    from:      "fade-up",
     delay:     0,
     duration:  800,
-    distance:  800,
+    distance:  100,
     threshold: 0.15,
     once:      true,
   });
@@ -686,7 +686,7 @@ ready(() => {
   });
   
   animate("faq-accordion", {
-    from:      "fade-left",
+    from:      "fade-up",
     delay:     0,
     duration:  800,
     distance:  100,
@@ -901,5 +901,43 @@ ready(() => {
     duration:  700,
     distance:  60,
     threshold: 0.15,
+    once:      true,
+  });
+
+//--------------------------------------------Hero2.astro
+  animate("hero2-eyebrow", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  700,
+    distance:  40,
+    threshold: 0.05,
+    once:      true,
+  });
+  
+  animateText("hero2-headline", {
+    wordDelay:  80,
+    charDelay:  15,
+    startDelay: 200,
+    duration:   800,
+    distance:   25,
+    threshold:  0.05,
+    once:       true
+  });
+  
+  animate("hero2-description", {
+    from:      "fade-right",
+    delay:     400,
+    duration:  700,
+    distance:  40,
+    threshold: 0.05,
+    once:      true,
+  });
+  
+  animate("hero2-form", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  800,
+    distance:  60,
+    threshold: 0.05,
     once:      true,
   });
