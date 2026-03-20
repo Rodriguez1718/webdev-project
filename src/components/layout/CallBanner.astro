@@ -26,7 +26,7 @@ const {
         >
             <!-- Centered Content - Message and Phone -->
             <div class="text-center">
-                <h3 class="font-bold text-white mb-2 leading-tight" style="font-size: 40px;">
+                <h3 id="call-banner-title" class="font-bold text-white mb-2 leading-tight" style="font-size: 40px;">
                     Don't Waste Your Time, Call Today: <a
                         href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
                         class="text-[#F48C06] hover:underline transition-all duration-300"
@@ -34,7 +34,7 @@ const {
                         {phoneNumber}
                     </a>
                 </h3>
-                <p class="text-white" style="font-size: 18px;">
+                <p id="call-banner-subtext" class="text-white" style="font-size: 18px;">
                     {subtext}
                 </p>
             </div>

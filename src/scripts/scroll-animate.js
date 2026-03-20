@@ -223,6 +223,10 @@ function animateText(id, config = {}) {
         wordWrapper.style.position = "relative";
         wordWrapper.style.display = "inline-block";
         
+        // Copy computed styles from parent element to preserve color
+        const computedStyle = window.getComputedStyle(parentEl);
+        const color = computedStyle.color;
+        
         word.split("").forEach((char) => {
           const charSpan = document.createElement("div");
           charSpan.textContent = char;
@@ -231,6 +235,7 @@ function animateText(id, config = {}) {
           charSpan.style.opacity = "0";
           charSpan.style.transform = `translate(${opts.distance}px, 0px)`;
           charSpan.style.transition = `opacity ${opts.duration}ms ${easeOutBack}, transform ${opts.duration}ms ${easeOutBack}`;
+          charSpan.style.color = color; // Preserve parent color
           wordWrapper.appendChild(charSpan);
         });
 
@@ -535,6 +540,26 @@ ready(() => {
     delay:     0,
     duration:  800,
     distance:  800,
+    threshold: 0.15,
+    once:      true,
+  });
+
+//--------------------------------------------CallBanner.astro
+  animateText("call-banner-title", {
+    wordDelay:  80,
+    charDelay:  15,
+    startDelay: 0,
+    duration:   800,
+    distance:   25,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("call-banner-subtext", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  40,
     threshold: 0.15,
     once:      true,
   });
