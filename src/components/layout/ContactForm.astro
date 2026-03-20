@@ -1,11 +1,12 @@
 ---
 // Contact Form Component - Modern side-by-side layout with glass morphism
 import FormInput from "../ui/FormInput.astro";
+import Button from "../ui/Button.astro";
 ---
 
 <!-- Main Contact Section -->
 <section class="py-20 bg-linear-to-br from-[#0a1931] to-[#1a2a4a]">
-    <div class="max-w-7xl mx-auto py-16 pt-[80px] px-8">
+    <div class="max-w-7xl mx-auto py-16 pt-20 px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <!-- Left Side - Content -->
             <div class="flex flex-col justify-start">
@@ -33,7 +34,7 @@ import FormInput from "../ui/FormInput.astro";
                     >
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                                class="w-14 h-14 rounded-xl bg-linear-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
                             >
                                 <svg
                                     class="w-7 h-7 text-white"
@@ -67,7 +68,7 @@ import FormInput from "../ui/FormInput.astro";
                     >
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                                class="w-14 h-14 rounded-xl bg-linear-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
                             >
                                 <svg
                                     class="w-7 h-7 text-white"
@@ -101,7 +102,7 @@ import FormInput from "../ui/FormInput.astro";
                     >
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                                class="w-14 h-14 rounded-xl bg-linear-to-br from-[#F48C06] to-[#E67E22] flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300"
                             >
                                 <svg
                                     class="w-7 h-7 text-white"
@@ -144,7 +145,7 @@ import FormInput from "../ui/FormInput.astro";
                         name="name"
                         placeholder="Your Name"
                         variant="glass"
-                        required
+                        required={true}
                     />
 
                     <FormInput
@@ -153,7 +154,7 @@ import FormInput from "../ui/FormInput.astro";
                         name="email"
                         placeholder="Your Email"
                         variant="glass"
-                        required
+                        required={true}
                     />
 
                     <FormInput
@@ -162,7 +163,7 @@ import FormInput from "../ui/FormInput.astro";
                         name="phone"
                         placeholder="Your Phone Number"
                         variant="glass"
-                        required
+                        required={true}
                     />
 
                     <FormInput
@@ -176,7 +177,7 @@ import FormInput from "../ui/FormInput.astro";
                             { value: "other", label: "Other" },
                         ]}
                         variant="glass"
-                        required
+                        required={true}
                     />
 
                     <FormInput
@@ -186,16 +187,19 @@ import FormInput from "../ui/FormInput.astro";
                         placeholder="Tell us about your project"
                         rows={4}
                         variant="glass"
-                        required
+                        required={true}
                     />
 
                     <!-- Submit Button -->
-                    <button
+                    <Button
                         type="submit"
-                        class="w-full inline-flex items-center justify-center gap-2 font-primary font-semibold border-none rounded-xl transition-all duration-300 cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#F48C06] disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider px-10 py-5 text-lg bg-linear-to-br from-[#F48C06] to-[#ff6b35] text-white hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(244,140,6,0.3)] active:translate-y-0"
+                        variant="primary"
+                        size="lg"
+                        fullWidth
+                        ariaLabel="Submit contact form to get your free consultation"
                     >
                         Get Your Free Consultation
-                    </button>
+                    </Button>
                 </form>
 
                 <!-- Trust Badge -->
