@@ -5,8 +5,8 @@ import Button from "../ui/Button.astro";
 ---
 
 <!-- Main Contact Section -->
-<section class="py-20 bg-linear-to-br from-[#0a1931] to-[#1a2a4a]">
-    <div class="max-w-7xl mx-auto py-16 pt-20 px-8">
+<section class="min-h-screen bg-linear-to-br from-[#0a1931] to-[#1a2a4a] flex items-center">
+    <div class="max-w-7xl mx-auto w-full px-8 py-12 pt-30">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <!-- Left Side - Content -->
             <div class="flex flex-col justify-start">
@@ -17,12 +17,11 @@ import Button from "../ui/Button.astro";
                     CONTACT US
                 </p>
                 <h1
-                    id="contact-title"
-                    class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight"
+                    class="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight"
                 >
                     Ready to Transform Your Online Presence?
                 </h1>
-                <p id="contact-desc" class="text-lg text-white mb-8 leading-relaxed">
+                <p class="text-lg text-white mb-7 leading-relaxed">
                     Whether you're looking to build a new website, improve your
                     digital marketing, or need a complete online overhaul, our
                     team is here to help you succeed and grow rapidly together.
@@ -123,8 +122,11 @@ import Button from "../ui/Button.astro";
                                 <h3 class="font-bold text-white mb-1 text-lg">
                                     Office
                                 </h3>
-                                <p class="text-white/90 text-sm">
+                                <p class="text-[#F48C06] text-base font-semibold mb-1">
                                     123 Main Street, New York, NY 10001
+                                </p>
+                                <p class="text-white text-sm">
+                                    Visit us during business hours
                                 </p>
                             </div>
                         </div>
@@ -134,10 +136,9 @@ import Button from "../ui/Button.astro";
 
             <!-- Right Side - Form Card with Glass Morphism -->
             <div
-                id="contact-form-card"
-                class="bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-10 h-full flex flex-col justify-center shadow-xl border border-white/20"
+                class="bg-white/10 backdrop-blur-md rounded-2xl px-6 pt-8 pb-6 md:px-8 md:pt-8 md:pb-8 h-fit flex flex-col justify-center shadow-xl border border-white/20"
             >
-                <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">
+                <h2 class="text-2xl md:text-3xl font-bold text-white mt-4 mb-4">
                     Send us a message
                 </h2>
                 <p class="text-white/80 mb-8 text-base">
@@ -207,57 +208,6 @@ import Button from "../ui/Button.astro";
                         Get Your Free Consultation
                     </Button>
                 </form>
-
-                <!-- Trust Badge -->
-                <div class="mt-6 pt-6 border-t border-white/20">
-                    <div class="flex items-center justify-center gap-6">
-                        <div class="flex items-center gap-2">
-                            <svg
-                                class="w-4 h-4 text-[#F48C06]"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-white/80 font-medium"
-                                >No credit card required</span
-                            >
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg
-                                class="w-4 h-4 text-[#F48C06]"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-white/80 font-medium"
-                                >Free estimate</span
-                            >
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <svg
-                                class="w-4 h-4 text-[#F48C06]"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-sm text-white/80 font-medium"
-                                >No obligation</span
-                            >
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Success Message -->
                 <div
