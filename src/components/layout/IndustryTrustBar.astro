@@ -92,13 +92,12 @@ const getIcon = (type: string) => {
             <div class="flex gap-3 md:gap-4 flex-nowrap">
                 {
                     certifications.map((cert) => (
-                        <div class="group flex items-center gap-3 px-4 md:px-5 py-3 rounded-lg bg-white border border-[#E5E7EB] transition-all duration-300 hover:border-[#F48C06] hover:shadow-md shrink-0">
+                        <div class="group bg-[var(--midnight-navy)] hover:bg-[var(--helios-orange)] px-5 md:px-6 py-4 rounded-2xl transition-all duration-400 border border-white/10 hover:shadow-[0_10px_25px_rgba(244,140,6,0.3)] flex items-center gap-3 min-h-[80px]">
                             <div
-                                class="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
-                                style="background: linear-gradient(135deg, var(--helios-orange), #ff6b35);"
+                                class="w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center shrink-0 bg-white/10 transition-all duration-400 group-hover:bg-white/20 group-hover:scale-105"
                             >
                                 <svg
-                                    class="w-5 h-5 md:w-5 md:h-5 text-white"
+                                    class="w-5 h-5 md:w-6 md:h-6 text-white stroke-1"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -107,16 +106,18 @@ const getIcon = (type: string) => {
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        stroke-width="2.5"
+                                        stroke-width="2"
                                         d={getIcon(cert.icon)}
                                     />
                                 </svg>
                             </div>
-                            <div class="flex flex-col gap-0">
-                                <span class="text-base md:text-[18px] font-bold text-[#0A1931] leading-tight">
+                            <div class="flex flex-col gap-1 flex-1">
+                                <span class="text-sm md:text-base font-bold text-white leading-none transition-colors duration-400">
                                     {cert.name}
                                 </span>
-                                <span class="text-sm md:text-[16px] text-machinist leading-tight">
+                                <span 
+                                    class="text-xs md:text-sm text-[var(--steel-pewter)] leading-none transition-colors duration-400 group-hover:text-white"
+                                >
                                     {cert.stat} {cert.label}
                                 </span>
                             </div>
