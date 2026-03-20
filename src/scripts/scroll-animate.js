@@ -15,7 +15,7 @@
 // ═══════════════════════════════════════════════════════════════
 
 const PRESETS = {
-  "fade-up":    { x:   0, y:  40, scale: 1    },
+  "fade-up":    { x:   0, y:  60, scale: 1    },
   "fade-down":  { x:   0, y: -40, scale: 1    },
   "fade-left":  { x:  50, y:   0, scale: 1    },
   "fade-right": { x: -50, y:   0, scale: 1    },
@@ -154,6 +154,47 @@ ready(() => {
     duration:  700,    
     threshold: 0.15,     
     once:      true,       
+  });
+
+  // Industry Trust Bar animations
+  animate("trust-header", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    threshold: 0.15,
+    once:      true,
+  });
+
+  animate("cert-nate", {
+    from:      "fade-up",
+    delay:     150,
+    duration:  800,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("cert-phcc", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("cert-google", {
+    from:      "fade-up",
+    delay:     450,
+    duration:  800,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("cert-yelp", {
+    from:      "fade-up",
+    delay:     600,
+    duration:  800,
+    threshold: 0.1,
+    once:      true,
   });
 
 });
