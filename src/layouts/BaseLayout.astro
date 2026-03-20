@@ -19,15 +19,22 @@ const {
 
 		<meta name="description" content={description} />
 
+		<!-- Preload critical font with font-display: swap to prevent FOUT -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="preload"
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+			as="style"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
 			rel="stylesheet"
 		/>
+
 		<title>{title}</title>
 	</head>
 	<body
 		class="min-h-screen flex flex-col font-primary"
-		style="font-family: 'Poppins', sans-serif;"
+		style="font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;"
 	>
 		<Navbar />
 		<main class="flex-1">

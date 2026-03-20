@@ -137,25 +137,25 @@ const {
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+<script defer>
+  // Defer slideshow initialization to avoid blocking LCP
+  function initSlideshow() {
     let currentSlide = 0;
     const slides = document.querySelectorAll(".slideshow-image");
     const dots = document.querySelectorAll(".slideshow-dot");
     const totalSlides = slides.length;
 
-    function showSlide(index: number) {
-      // Remove active class from all slides and dots
+    if (totalSlides === 0) return;
+
+    function showSlide(index) {
       slides.forEach((slide) =>
         slide.classList.remove("active", "opacity-100"),
       );
       dots.forEach((dot) => dot.classList.remove("active"));
 
-      // Add active class to current slide and dot
       slides[index].classList.add("active", "opacity-100");
       dots[index].classList.add("active");
 
-      // Update dot styles
       dots.forEach((dot, i) => {
         if (i === index) {
           dot.classList.remove("bg-white/50");
@@ -172,17 +172,22 @@ const {
       showSlide(currentSlide);
     }
 
-    // Auto-advance slideshow every 5 seconds
     setInterval(nextSlide, 5000);
 
-    // Manual navigation with dots
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
         currentSlide = index;
         showSlide(currentSlide);
       });
     });
-  });
+  }
+
+  // Initialize after DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSlideshow);
+  } else {
+    initSlideshow();
+  }
 </script>
 
 <style>
