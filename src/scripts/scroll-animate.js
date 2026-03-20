@@ -824,6 +824,63 @@ ready(() => {
     once:      true,
   });
 
+//--------------------------------------------ServicePillars.astro
+  animate("service-pillars-tag", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("service-pillars-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("service-pillars-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  // Animate 3 service pillar cards with staggered delays
+  animate("service-pillar-card-1", {
+    from:      "fade-up",
+    delay:     150,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("service-pillar-card-2", {
+    from:      "fade-up",
+    delay:     300,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
+  animate("service-pillar-card-3", {
+    from:      "fade-up",
+    delay:     450,
+    duration:  800,
+    distance:  80,
+    threshold: 0.1,
+    once:      true,
+  });
+
 });
 
 
