@@ -139,7 +139,12 @@ import Button from "../ui/Button.astro";
 
             <!-- CTA Button -->
             <div class="hidden lg:flex ml-auto">
-                <Button variant="primary" size="md" href="/contact">
+                <Button
+                    variant="primary"
+                    size="md"
+                    href="/contact"
+                    ariaLabel="Get a quote for your project"
+                >
                     Get a Quote
                 </Button>
             </div>
@@ -152,7 +157,7 @@ import Button from "../ui/Button.astro";
                     id="burgerBtn"
                     aria-controls="mobile-menu"
                     aria-expanded="false"
-                    aria-label="Toggle menu"
+                    aria-label="Toggle navigation menu"
                 >
                     <div
                         class="line line-top h-0.5 rounded-sm bg-current transition-all duration-300 ease-out w-3.5"
@@ -269,7 +274,13 @@ import Button from "../ui/Button.astro";
                 data-path="/contact">Contact</a
             >
             <div class="px-3 py-2">
-                <Button variant="primary" size="md" href="/contact" fullWidth>
+                <Button
+                    variant="primary"
+                    size="md"
+                    href="/contact"
+                    fullWidth
+                    ariaLabel="Get a quote for your project"
+                >
                     Get a Quote
                 </Button>
             </div>

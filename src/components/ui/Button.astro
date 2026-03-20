@@ -8,6 +8,7 @@ interface Props {
   disabled?: boolean;
   fullWidth?: boolean;
   class?: string;
+  ariaLabel?: string;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
   disabled = false,
   fullWidth = false,
   class: className = "",
+  ariaLabel,
 } = Astro.props;
 
 const baseClasses = `
@@ -71,6 +73,7 @@ const Tag = href ? "a" : "button";
   href={href}
   disabled={!href ? disabled : undefined}
   aria-disabled={disabled}
+  aria-label={ariaLabel}
   class={allClasses}
 >
   <slot />
