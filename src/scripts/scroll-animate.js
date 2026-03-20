@@ -125,6 +125,7 @@ function animateAll(items = []) {
 
 /**
  * Animates text word by word, with each word's characters fading in from the right.
+ * Preserves HTML elements like spans with styling.
  *
  * @param {string} id       — The element's HTML id attribute
  * @param {object} config
@@ -156,43 +157,95 @@ function animateText(id, config = {}) {
   // easeOutBack cubic-bezier for bouncy effect
   const easeOutBack = "cubic-bezier(0.34, 1.56, 0.64, 1)";
 
-  // Store original text and clear element
-  const originalText = el.textContent;
-  el.textContent = "";
+  // Store original HTML and clear element
+  const originalHTML = el.innerHTML;
+  el.innerHTML = "";
   el.style.opacity = "1";
   el.style.perspective = "400px";
 
-  // Split into words
-  const words = originalText.split(" ");
+  // Create a temporary element to parse HTML
+  const temp = document.createElement("div");
+  temp.innerHTML = originalHTML;
+
   const wordElements = [];
+  let wordIndex = 0;
 
-  words.forEach((word, wordIndex) => {
-    // Create word wrapper
-    const wordWrapper = document.createElement("div");
-    wordWrapper.style.position = "relative";
-    wordWrapper.style.display = "inline-block";
-    
-    // Wrap each character in the word
-    word.split("").forEach((char) => {
-      const charSpan = document.createElement("div");
-      charSpan.textContent = char;
-      charSpan.style.position = "relative";
-      charSpan.style.display = "inline-block";
-      charSpan.style.opacity = "0";
-      charSpan.style.transform = `translate(${opts.distance}px, 0px)`;
-      charSpan.style.transition = `opacity ${opts.duration}ms ${easeOutBack}, transform ${opts.duration}ms ${easeOutBack}`;
-      wordWrapper.appendChild(charSpan);
-    });
+  // Process all child nodes (text and elements)
+  function processNode(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      // Text node - split into words
+      const text = node.textContent;
+      const words = text.split(" ").filter(w => w.length > 0);
+      
+      words.forEach((word, idx) => {
+        const wordWrapper = document.createElement("div");
+        wordWrapper.style.position = "relative";
+        wordWrapper.style.display = "inline-block";
+        
+        word.split("").forEach((char) => {
+          const charSpan = document.createElement("div");
+          charSpan.textContent = char;
+          charSpan.style.position = "relative";
+          charSpan.style.display = "inline-block";
+          charSpan.style.opacity = "0";
+          charSpan.style.transform = `translate(${opts.distance}px, 0px)`;
+          charSpan.style.transition = `opacity ${opts.duration}ms ${easeOutBack}, transform ${opts.duration}ms ${easeOutBack}`;
+          wordWrapper.appendChild(charSpan);
+        });
 
-    el.appendChild(wordWrapper);
-    wordElements.push(wordWrapper);
-
-    // Add space after word (except last word)
-    if (wordIndex < words.length - 1) {
-      const space = document.createTextNode(" ");
-      el.appendChild(space);
+        el.appendChild(wordWrapper);
+        wordElements.push(wordWrapper);
+        
+        // Add space after word (except last)
+        if (idx < words.length - 1 || node.nextSibling) {
+          el.appendChild(document.createTextNode(" "));
+        }
+      });
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      // Element node (like span) - preserve it and process its content
+      const clone = node.cloneNode(false);
+      el.appendChild(clone);
+      
+      // Process children of this element
+      Array.from(node.childNodes).forEach(child => {
+        processNodeInElement(child, clone);
+      });
     }
-  });
+  }
+
+  function processNodeInElement(node, parentEl) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.textContent;
+      const words = text.split(" ").filter(w => w.length > 0);
+      
+      words.forEach((word, idx) => {
+        const wordWrapper = document.createElement("div");
+        wordWrapper.style.position = "relative";
+        wordWrapper.style.display = "inline-block";
+        
+        word.split("").forEach((char) => {
+          const charSpan = document.createElement("div");
+          charSpan.textContent = char;
+          charSpan.style.position = "relative";
+          charSpan.style.display = "inline-block";
+          charSpan.style.opacity = "0";
+          charSpan.style.transform = `translate(${opts.distance}px, 0px)`;
+          charSpan.style.transition = `opacity ${opts.duration}ms ${easeOutBack}, transform ${opts.duration}ms ${easeOutBack}`;
+          wordWrapper.appendChild(charSpan);
+        });
+
+        parentEl.appendChild(wordWrapper);
+        wordElements.push(wordWrapper);
+        
+        if (idx < words.length - 1) {
+          parentEl.appendChild(document.createTextNode(" "));
+        }
+      });
+    }
+  }
+
+  // Process all child nodes
+  Array.from(temp.childNodes).forEach(processNode);
 
   // Animate words on scroll
   const observer = new IntersectionObserver(
@@ -200,9 +253,8 @@ function animateText(id, config = {}) {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        // Start animation after initial delay
         setTimeout(() => {
-          wordElements.forEach((wordEl, wordIndex) => {
+          wordElements.forEach((wordEl, idx) => {
             const chars = wordEl.querySelectorAll("div");
             
             setTimeout(() => {
@@ -212,7 +264,7 @@ function animateText(id, config = {}) {
                   char.style.transform = "translate(0px, 0px)";
                 }, charIndex * opts.charDelay);
               });
-            }, wordIndex * opts.wordDelay);
+            }, idx * opts.wordDelay);
           });
         }, opts.startDelay);
 
@@ -436,6 +488,53 @@ ready(() => {
     delay:     300,
     duration:  700,
     distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+
+//--------------------------------------------Trades.astro
+  animate("trades-tag", {
+    from:      "fade-up",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("trades-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("trades-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("trade-hvac", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  800,
+    distance:  800,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("trade-plumbing", {
+    from:      "fade-left",
+    delay:     0,
+    duration:  800,
+    distance:  800,
     threshold: 0.15,
     once:      true,
   });
