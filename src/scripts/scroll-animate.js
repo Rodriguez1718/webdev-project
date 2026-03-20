@@ -694,4 +694,78 @@ ready(() => {
     once:      true,
   });
 
+//--------------------------------------------CTASection.astro
+  animate("cta-eyebrow", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animateText("cta-title", {
+    wordDelay:  100,
+    charDelay:  20,
+    startDelay: 0,
+    duration:   1000,
+    distance:   30,
+    threshold:  0.15,
+    once:       true
+  });
+  
+  animate("cta-desc", {
+    from:      "fade-right",
+    delay:     200,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("cta-feature-1", {
+    from:      "fade-right",
+    delay:     0,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("cta-feature-2", {
+    from:      "fade-right",
+    delay:     100,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("cta-feature-3", {
+    from:      "fade-right",
+    delay:     200,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("cta-feature-4", {
+    from:      "fade-right",
+    delay:     300,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
+  animate("cta-form-card", {
+    from:      "fade-left",
+    delay:     0,
+    duration:  800,
+    distance:  100,
+    threshold: 0.15,
+    once:      true,
+  });
+
 });
