@@ -38,7 +38,7 @@
                     class="faq-item active border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06]"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none"
                         aria-expanded="true"
                         aria-controls="faq-content-1"
                     >
@@ -82,7 +82,7 @@
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06]"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none"
                         aria-expanded="false"
                         aria-controls="faq-content-2"
                     >
@@ -126,7 +126,7 @@
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06]"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none"
                         aria-expanded="false"
                         aria-controls="faq-content-3"
                     >
@@ -170,7 +170,7 @@
                     class="faq-item border-b border-[#99B0BB]/20 transition-all duration-300"
                 >
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06]"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none"
                         aria-expanded="false"
                         aria-controls="faq-content-4"
                     >
@@ -212,7 +212,7 @@
                 <!-- FAQ Item 5 -->
                 <div class="faq-item transition-all duration-300">
                     <button
-                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F48C06]"
+                        class="faq-header w-full flex items-center justify-between py-6 bg-transparent border-none cursor-pointer transition-all duration-300 text-left rounded-lg focus:outline-none"
                         aria-expanded="false"
                         aria-controls="faq-content-5"
                     >
@@ -259,6 +259,10 @@
     /* Active state styles */
     .faq-item.active .faq-icon {
         transform: rotate(45deg);
+    }
+
+    .faq-item.active .faq-header span {
+        color: #f48c06;
     }
 
     .faq-header:hover span {
