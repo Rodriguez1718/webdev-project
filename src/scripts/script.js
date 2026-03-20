@@ -7,38 +7,54 @@ document.addEventListener('DOMContentLoaded', function () {
   const tradesDropdown = document.getElementById('tradesDropdown');
   const tradesDropdownIcon = document.getElementById('tradesDropdownIcon');
 
+  /**
+   * OPTIMIZED: Batch all reads before writes to prevent forced reflow
+   * Use requestAnimationFrame to defer layout measurements
+   */
   function updateMenuHeight() {
     if (!mobileMenu) return;
+
+    // Batch all reads first (no writes yet)
     const isExpanded = burgerBtn?.getAttribute('aria-expanded') === 'true';
-    if (isExpanded) {
-      const menuContent = mobileMenu.querySelector('div');
-      mobileMenu.style.maxHeight = menuContent.scrollHeight + 'px';
-    } else {
-      mobileMenu.style.maxHeight = '0px';
-    }
+    const menuContent = mobileMenu.querySelector('div');
+
+    // Defer writes to next animation frame to prevent layout thrashing
+    requestAnimationFrame(() => {
+      if (isExpanded && menuContent) {
+        // Read scrollHeight once, then write
+        const height = menuContent.scrollHeight;
+        mobileMenu.style.maxHeight = height + 'px';
+      } else {
+        mobileMenu.style.maxHeight = '0px';
+      }
+    });
   }
 
   burgerBtn?.addEventListener('click', function () {
+    // Batch all reads first
     const isExpanded = burgerBtn.getAttribute('aria-expanded') === 'true';
+    const newExpandedState = (!isExpanded).toString();
 
-    // Toggle burger animation
+    // Batch all writes together
     burgerBtn.classList.toggle('open');
+    burgerBtn.setAttribute('aria-expanded', newExpandedState);
 
-    // Update aria-expanded
-    burgerBtn.setAttribute('aria-expanded', (!isExpanded).toString());
-
-    // Update menu height
+    // Defer height update to next frame
     updateMenuHeight();
   });
 
   // Trades dropdown toggle
   tradesDropdownBtn?.addEventListener('click', function () {
+    // Batch all reads first
     const isExpanded = tradesDropdownBtn.getAttribute('aria-expanded') === 'true';
-    tradesDropdownBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    const newExpandedState = (!isExpanded).toString();
+
+    // Batch all writes together
+    tradesDropdownBtn.setAttribute('aria-expanded', newExpandedState);
     tradesDropdown?.classList.toggle('hidden');
     tradesDropdownIcon?.classList.toggle('rotate-180');
 
-    // Update menu height when dropdown changes
+    // Defer height update to next frame
     updateMenuHeight();
   });
 
@@ -46,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-item[href]');
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', function () {
+      // Batch all writes together
       if (burgerBtn) {
         burgerBtn.setAttribute('aria-expanded', 'false');
         burgerBtn.classList.remove('open');
