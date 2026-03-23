@@ -62,7 +62,7 @@ const pillars = [
             {
                 pillars.map((pillar, index) => (
                     <div id={`service-pillar-card-${index + 1}`}>
-                    <FeatureCard title={pillar.title} description={pillar.description}>
+                    <FeatureCard id={`service-pillar-card-${index + 1}`} title={pillar.title} description={pillar.description}>
                         <div class="flex flex-col items-start mb-6">
                             <div
                                 class="w-16 h-16 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 mb-4"
