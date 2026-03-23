@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from 'astro:content';
 import Button from "../ui/Button.astro";
 import logoImage from "../../assets/logo.avif";
+import { getTradeIcon } from "../../utils/tradeIcons";
+
+const trades = await getCollection('trades');
 ---
 
 <nav
@@ -74,52 +78,30 @@ import logoImage from "../../assets/logo.avif";
                         class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
                     >
                         <div class="py-2">
-                            <a
-                                href="/trades-we-serve/hvac"
-                                class="flex items-center px-4 py-3 text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 transition-colors duration-200"
-                            >
-                                <svg
-                                    class="w-6 h-6 mr-3 shrink-0"
-                                    viewBox="0 0 1024 1024"
-                                    xmlns="http://www.w3.org/2000/svg"
+                            {trades.map((trade) => (
+                                <a
+                                    href={`/trades-we-serve/${trade.data.slug}`}
+                                    class="flex items-center px-4 py-3 text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 transition-colors duration-200"
                                 >
-                                    <path
-                                        d="M513.2 609.8c54.1 0 98-43.9 98-98s-43.9-98-98-98-98 43.9-98 98 43.9 98 98 98zM472.4 655.9c-10.6 26.5-28 52.7-77.4 123.4-48.6 72.8-19.9 124.5 88.7 124.5 146.9 0 227.6-137.2 117.2-291.8 0 0-51.3 25.7-87.8 25.7-11.6 0-22.9-1.6-33.6-4.5-1.7 7.7-4.1 15.2-7.1 22.7zM367 470.4c-26.5-10.6-52.7-28-123.4-77.4-72.8-48.6-124.5-19.9-124.5 88.7 0 147 137.2 227.6 291.8 117.2 0 0-23.7-50.8-23.7-87.2 0-11.7 1.6-23 4.6-33.7-8.4-1.8-16.6-4.3-24.8-7.6zM552.6 367.5c10.6-26.5 28-52.7 77.4-123.4 48.6-72.8 19.9-124.5-88.7-124.5-147 0-227.6 137.2-117.2 291.8 0 0 52.9-25.7 89.2-25.7 11.1 0 21.9 1.4 32.2 4.2 1.7-7.5 4.1-14.9 7.1-22.4zM613.5 424s25.7 50.6 25.7 87.8c0 11.6-1.6 22.9-4.5 33.6 7.7 1.8 15.2 4.2 22.7 7.2 26.5 10.6 52.7 28 123.4 77.4 72.8 48.6 124.5 19.9 124.5-88.7 0-147-137.2-227.7-291.8-117.3z"
-                                        fill="#F48C06"
-                                    ></path>
-                                </svg>
-                                <div>
-                                    <div class="font-medium text-[#0A1931]">
-                                        HVAC
+                                    <svg
+                                        class="w-6 h-6 mr-3 shrink-0"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g set:html={getTradeIcon(trade.data.trade)} />
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium text-[#0A1931]">
+                                            {trade.data.title}
+                                        </div>
+                                        <div class="text-base text-gray-500">
+                                            {trade.data.shortTitle}
+                                        </div>
                                     </div>
-                                    <div class="text-base text-gray-500">
-                                        Heating, cooling & ventilation
-                                    </div>
-                                </div>
-                            </a>
-                            <a
-                                href="/trades-we-serve/plumbing"
-                                class="flex items-center px-4 py-3 text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 transition-colors duration-200"
-                            >
-                                <svg
-                                    class="w-6 h-6 mr-3 shrink-0"
-                                    viewBox="0 0 50 50"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M45.971 44.396c0-1.994-3.638-7.567-3.638-7.567s-3.693 5.573-3.693 7.567c0 1.99 1.642 3.604 3.666 3.604 2.023 0 3.665-1.614 3.665-3.604zm-26.305-31.225h-7.331v-7.227h1.999v-3.944h-13.334v3.944h2v11.17c0 2.904 2.388 5.257 5.333 5.257h11.333v1.972h4.001v-13.142h-4.001v1.97zm27.332 16.428v-11.17c0-2.903-2.387-5.257-5.329-5.257h-11.335v-1.97h-4.001v13.143h4.001v-1.973h7.332v7.227h-1.997v3.944h13.331v-3.944h-2.002z"
-                                        fill="#F48C06"
-                                    ></path>
-                                </svg>
-                                <div>
-                                    <div class="font-medium text-[#0A1931]">
-                                        Plumbing
-                                    </div>
-                                    <div class="text-base text-gray-500">
-                                        Pipes, fixtures & repairs
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -242,48 +224,28 @@ import logoImage from "../../assets/logo.avif";
                 class="mobile-trades-dropdown overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 border-l-4 border-[#F48C06]"
                 style="max-height: 0;"
             >
-                <a
-                    href="/trades-we-serve/hvac"
-                    class="flex items-center px-6 py-3 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
-                >
-                    <svg
-                        class="w-6 h-6 mr-3 shrink-0"
-                        viewBox="0 0 1024 1024"
-                        xmlns="http://www.w3.org/2000/svg"
+                {trades.map((trade) => (
+                    <a
+                        href={`/trades-we-serve/${trade.data.slug}`}
+                        class="flex items-center px-6 py-3 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
                     >
-                        <path
-                            d="M513.2 609.8c54.1 0 98-43.9 98-98s-43.9-98-98-98-98 43.9-98 98 43.9 98 98 98zM472.4 655.9c-10.6 26.5-28 52.7-77.4 123.4-48.6 72.8-19.9 124.5 88.7 124.5 146.9 0 227.6-137.2 117.2-291.8 0 0-51.3 25.7-87.8 25.7-11.6 0-22.9-1.6-33.6-4.5-1.7 7.7-4.1 15.2-7.1 22.7zM367 470.4c-26.5-10.6-52.7-28-123.4-77.4-72.8-48.6-124.5-19.9-124.5 88.7 0 147 137.2 227.6 291.8 117.2 0 0-23.7-50.8-23.7-87.2 0-11.7 1.6-23 4.6-33.7-8.4-1.8-16.6-4.3-24.8-7.6zM552.6 367.5c10.6-26.5 28-52.7 77.4-123.4 48.6-72.8 19.9-124.5-88.7-124.5-147 0-227.6 137.2-117.2 291.8 0 0 52.9-25.7 89.2-25.7 11.1 0 21.9 1.4 32.2 4.2 1.7-7.5 4.1-14.9 7.1-22.4zM613.5 424s25.7 50.6 25.7 87.8c0 11.6-1.6 22.9-4.5 33.6 7.7 1.8 15.2 4.2 22.7 7.2 26.5 10.6 52.7 28 123.4 77.4 72.8 48.6 124.5 19.9 124.5-88.7 0-147-137.2-227.7-291.8-117.3z"
-                            fill="#F48C06"
-                        ></path>
-                    </svg>
-                    <div>
-                        <div class="font-medium">HVAC</div>
-                        <div class="text-base text-gray-500">
-                            Heating, cooling & ventilation
+                        <svg
+                            class="w-6 h-6 mr-3 shrink-0"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <g set:html={getTradeIcon(trade.data.trade)} />
+                        </svg>
+                        <div>
+                            <div class="font-medium">{trade.data.title}</div>
+                            <div class="text-base text-gray-500">
+                                {trade.data.shortTitle}
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <a
-                    href="/trades-we-serve/plumbing"
-                    class="flex items-center px-6 py-3 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
-                >
-                    <svg
-                        class="w-6 h-6 mr-3 shrink-0"
-                        viewBox="0 0 50 50"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M45.971 44.396c0-1.994-3.638-7.567-3.638-7.567s-3.693 5.573-3.693 7.567c0 1.99 1.642 3.604 3.666 3.604 2.023 0 3.665-1.614 3.665-3.604zm-26.305-31.225h-7.331v-7.227h1.999v-3.944h-13.334v3.944h2v11.17c0 2.904 2.388 5.257 5.333 5.257h11.333v1.972h4.001v-13.142h-4.001v1.97zm27.332 16.428v-11.17c0-2.903-2.387-5.257-5.329-5.257h-11.335v-1.97h-4.001v13.143h4.001v-1.973h7.332v7.227h-1.997v3.944h13.331v-3.944h-2.002z"
-                            fill="#F48C06"
-                        ></path>
-                    </svg>
-                    <div>
-                        <div class="font-medium">Plumbing</div>
-                        <div class="text-base text-gray-500">
-                            Pipes, fixtures & repairs
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                ))}
             </div>
             <a
                 href="/what-we-do"

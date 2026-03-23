@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTASection from "../../components/layout/CTASection.astro";
+import FAQ from "../../components/layout/FAQ.astro";
+import Hero2 from "../../components/layout/Hero2.astro";
+import TradeFeatures from "../../components/layout/TradeFeatures.astro";
+import TemplateGallery from "../../components/layout/TemplateGallery.astro";
+
+export async function getStaticPaths() {
+  const trades = await getCollection('trades');
+  return trades.map((trade) => ({
+    params: { slug: trade.data.slug },
+    props: { trade },
+  }));
+}
+
+const { trade } = Astro.props;
+const { title, slug } = trade.data;
+
+// Default benefits for any trade
+const defaultBenefits = [
+    {
+        title: "Professional Online Presence",
+        description:
+            "Establish credibility with a modern, professional website tailored to your trade",
+    },
+    {
+        title: "Online Booking & Scheduling",
+        description:
+            "Streamlined scheduling system allowing customers to book services at their convenience",
+    },
+    {
+        title: "Local SEO Optimization",
+        description:
+            "Optimized for local search results with clear service area coverage and location-based content",
+    },
+    {
+        title: "Customer Reviews Integration",
+        description:
+            "Display authentic customer testimonials and reviews to build trust and credibility",
+    },
+    {
+        title: "Mobile-First Design",
+        description:
+            "Fully responsive design optimized for customers accessing your services on mobile devices",
+    },
+    {
+        title: "Service Portfolio Showcase",
+        description:
+            "Professional gallery displaying your completed work and range of services",
+    },
+];
+
+const defaultSolutions = [
+    {
+        title: "Professional Website Design",
+        description:
+            "Custom-built sites showcasing your services and expertise",
+    },
+    {
+        title: "Online Booking System",
+        description: "Easy scheduling system for customer appointments",
+    },
+    {
+        title: "Local SEO Optimization",
+        description: "Dominate local search results in your service areas",
+    },
+    {
+        title: "Customer Portal",
+        description: "Track service history and manage invoices online",
+    },
+];
+---
+
+<BaseLayout
+    title={`${title} Website Design & Templates - Professional Solutions for Contractors`}
+    description={`Professional website templates and design services specifically for ${title.toLowerCase()} contractors. Grow your business with our specialized digital solutions.`}
+>
+    <main>
+        <Hero2
+            eyebrow={`${title.toUpperCase()} SOLUTIONS`}
+            headline={title}
+            highlightWord="Services"
+            description={`Specialized digital solutions designed specifically for ${title.toLowerCase()} contractors and service providers to grow their business and reach more customers.`}
+            showForm={true}
+            showBackLink={true}
+            backLink="/trades-we-serve"
+            backText="Back to Trades"
+        />
+        <TemplateGallery trade={slug} />
+        <TradeFeatures
+            trade={slug}
+            title={`What's Included With Our ${title} Website Design Services`}
+            subtitle={`We implement the latest and greatest technology for all the ${title.toLowerCase()} websites we build. Your website design is in good hands with`}
+            benefits={defaultBenefits}
+            solutionsTitle={`Our ${title} Solutions`}
+            solutions={defaultSolutions}
+        />
+        <FAQ />
+        <CTASection />
+    </main>
+</BaseLayout>

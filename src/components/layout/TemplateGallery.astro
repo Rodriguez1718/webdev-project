@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import Button from "../ui/Button.astro";
 
 export interface Props {
-    trade: "hvac" | "plumbing";
+    trade: string;
 }
 
 const { trade } = Astro.props;
@@ -15,9 +15,9 @@ const tradeTemplates = allTemplates.filter(
     (template) => template.data.trade.toLowerCase() === trade.toLowerCase(),
 );
 
-// Set colors based on trade
+// Set colors based on trade - default to orange for new trades
 const accentColor = trade === "hvac" ? "#0A1931" : "#F48C06";
-const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
+const tradeName = trade.charAt(0).toUpperCase() + trade.slice(1);
 ---
 
 <section class="py-20 bg-parchment">
@@ -53,9 +53,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                                 <img
                                     src={
                                         template.data.thumbnail ||
-                                        (trade === "hvac"
-                                            ? "/images/hvac1.png"
-                                            : "/images/plumbing1.png")
+                                        "/images/img1.avif"
                                     }
                                     alt={template.data.title}
                                     class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -115,7 +113,7 @@ const tradeName = trade === "hvac" ? "HVAC" : "Plumbing";
                 </div>
             ) : (
                 <div class="text-center py-12">
-                    <p class="text-xl text-white">
+                    <p class="text-xl text-black">
                         No templates available yet. Check back soon!
                     </p>
                 </div>

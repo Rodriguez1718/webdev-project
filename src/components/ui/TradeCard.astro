@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  shortTitle: string;
+  hoverDescription: string;
+  description: string;
+  image: string;
+  overlayColor: 'navy' | 'orange';
+  slug: string;
+}
+
+const { title, shortTitle, hoverDescription, description, image, overlayColor, slug } = Astro.props;
+
+const isNavy = overlayColor === 'navy';
+const textColor = isNavy ? 'text-white' : 'text-black';
+const textOpacity = isNavy ? 'text-white/80' : 'text-black/80';
+const descColor = isNavy ? 'text-white/90' : 'text-black/90';
+const overlayColorVar = isNavy ? 'var(--midnight-navy)' : 'var(--helios-orange)';
+---
+
+<a
+  id={`trade-${slug}`}
+  href={`/trades-we-serve/${slug}`}
+  class="group relative h-96 rounded-3xl overflow-hidden shadow-2xl cursor-pointer block transition-transform duration-300 hover:scale-[1.02]"
+>
+  <!-- Image Background -->
+  <img
+    src={image}
+    alt={title}
+    class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+  />
+
+  <!-- Overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-500 group-hover:from-[color:var(--overlay-color)] group-hover:via-[color:var(--overlay-color)] group-hover:to-[color:var(--overlay-color)]"
+    style={{ '--overlay-color': overlayColorVar } as any}
+  >
+  </div>
+
+  <!-- Content - Default State -->
+  <div
+    class="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-500 group-hover:opacity-0"
+  >
+    <div class="text-white">
+      <div class="text-sm font-semibold mb-3 opacity-80">
+        {title}
+      </div>
+      <h3 class="text-3xl font-bold">{shortTitle}</h3>
+    </div>
+  </div>
+
+  <!-- Content - Hover State -->
+  <div
+    class="absolute inset-0 p-8 flex flex-col justify-between opacity-0 transition-all duration-500 group-hover:opacity-100"
+  >
+    <div class={`text-base font-semibold ${textOpacity}`}>
+      {title}
+    </div>
+
+    <div>
+      <h3 class={`text-3xl font-bold ${textColor} mb-4`}>
+        {hoverDescription}
+      </h3>
+      <p class={`${descColor} text-base leading-relaxed mb-6 max-w-lg`}>
+        {description}
+      </p>
+      <span class={`inline-flex items-center gap-2 ${textColor} font-semibold underline hover:no-underline transition-all duration-300`}>
+        Read More
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>
+
+<style>
+  /* Smooth transitions */
+  * {
+    transition-property:
+      transform, box-shadow, background-color, border-color, color, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>

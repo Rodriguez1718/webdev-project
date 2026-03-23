@@ -1,5 +1,11 @@
 ---
 // Trades Section with Hover Cards
+import { getCollection } from 'astro:content';
+import Button from '../ui/Button.astro';
+
+// Get all trades and sort by order
+const allTrades = await getCollection('trades');
+const trades = allTrades.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="py-20 relative overflow-hidden bg-parchment">
@@ -20,129 +26,99 @@
       >
         Our <span style="color: var(--helios-orange);">Expertise</span>
       </h2>
-      <p id="trades-desc" class="max-w-4xl mx-auto leading-relaxed text-[#0A1931]" style="font-size: 22px;">
-        We specialize in creating powerful digital solutions for HVAC and
-        plumbing contractors that convert visitors into customers.
+      <p id="trades-desc" class="text-lg max-w-3xl mx-auto leading-relaxed text-[#0A1931]">
+        We specialize in creating powerful digital solutions for contractors
+        that convert visitors into customers.
       </p>
     </div>
 
     <!-- Trades Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full items-stretch">
-      <!-- HVAC Card -->
-      <a
-        id="trade-hvac"
-        href="/trades-we-serve/hvac"
-        class="group relative h-96 rounded-3xl overflow-hidden shadow-2xl cursor-pointer block transition-transform duration-300 hover:scale-[1.02]"
-      >
-        <!-- Image Background -->
-        <img
-          src="/images/img4.avif"
-          alt="HVAC technician"
-          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-        />
+      {trades.map((trade, index) => {
+        const isHVAC = trade.data.slug === 'hvac';
+        const textColor = isHVAC ? 'text-white' : 'text-white';
+        const textOpacity = isHVAC ? 'text-white/80' : 'text-white/80';
+        const textOpacity90 = isHVAC ? 'text-white/90' : 'text-white/90';
+        
+        return (
+          <a
+            id={`trade-${trade.data.slug}`}
+            href={`/trades-we-serve/${trade.data.slug}`}
+            class="group relative h-96 rounded-3xl overflow-hidden shadow-2xl cursor-pointer block transition-transform duration-300 hover:scale-[1.02]"
+          >
+            <!-- Image Background -->
+            <img
+              src={trade.data.image}
+              alt={`${trade.data.name} technician`}
+              class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
 
-        <!-- Overlay -->
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-500 group-hover:from-[var(--midnight-navy)] group-hover:via-[var(--midnight-navy)] group-hover:to-[var(--midnight-navy)]"
-        >
-        </div>
-
-        <!-- Content - Default State -->
-        <div
-          class="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-500 group-hover:opacity-0"
-        >
-          <div class="text-white">
-            <div class="text-sm font-semibold mb-3 opacity-80">
-              HVAC Services
+            <!-- Overlay -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-500"
+              style={`--hover-color: ${trade.data.hoverColor};`}
+              data-hover-color={trade.data.hoverColor}
+            >
             </div>
-            <h3 class="text-3xl font-bold">Climate Control Solutions</h3>
-          </div>
-        </div>
 
-        <!-- Content - Hover State -->
-        <div
-          class="absolute inset-0 p-8 flex flex-col justify-between opacity-0 transition-all duration-500 group-hover:opacity-100"
-        >
-          <div class="text-base font-semibold text-white/80">HVAC Services</div>
-
-          <div>
-            <h3 class="text-3xl font-bold text-white mb-4">
-              Heating & Cooling Excellence
-            </h3>
-            <p class="text-white/90 text-base leading-relaxed mb-6 max-w-lg">
-              Professional HVAC solutions with mobile-optimized booking, local
-              SEO optimization, and customer testimonials to drive year-round
-              business growth and increase revenue.
-            </p>
-            <span class="inline-flex items-center gap-2 text-white font-semibold underline hover:no-underline transition-all duration-300">
-              Read More
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </span>
-          </div>
-        </div>
-      </a>
-      <!-- Plumbing Card -->
-      <a
-        id="trade-plumbing"
-        href="/trades-we-serve/plumbing"
-        class="group relative h-96 rounded-3xl overflow-hidden shadow-2xl cursor-pointer block transition-transform duration-300 hover:scale-[1.02]"
-      >
-        <!-- Image Background -->
-        <img
-          src="/images/img2.avif"
-          alt="Plumber working"
-          class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-        />
-
-        <!-- Overlay -->
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-500 group-hover:from-[var(--helios-orange)] group-hover:via-[var(--helios-orange)] group-hover:to-[var(--helios-orange)]"
-        >
-        </div>
-
-        <!-- Content - Default State -->
-        <div
-          class="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-500 group-hover:opacity-0"
-        >
-          <div class="text-white">
-            <div class="text-sm font-semibold mb-3 opacity-80">
-              Plumbing Services
+            <!-- Content - Default State -->
+            <div
+              class="absolute inset-0 p-8 flex flex-col justify-end transition-all duration-500 group-hover:opacity-0"
+            >
+              <div class="text-white">
+                <div class="text-sm font-semibold mb-3 opacity-80">
+                  {trade.data.name}
+                </div>
+                <h3 class="text-3xl font-bold">{trade.data.tagline}</h3>
+              </div>
             </div>
-            <h3 class="text-3xl font-bold">Emergency Ready Solutions</h3>
-          </div>
-        </div>
 
-        <!-- Content - Hover State -->
-        <div
-          class="absolute inset-0 p-8 flex flex-col justify-between opacity-0 transition-all duration-500 group-hover:opacity-100"
-        >
-          <div class="text-base font-semibold text-black/80">
-            Plumbing Services
-          </div>
+            <!-- Content - Hover State -->
+            <div
+              class="absolute inset-0 p-8 flex flex-col justify-between opacity-0 transition-all duration-500 group-hover:opacity-100"
+            >
+              <div class={`text-base font-semibold ${textOpacity}`}>{trade.data.name}</div>
 
-          <div>
-            <h3 class="text-3xl font-bold text-black mb-4">
-              24/7 Emergency Plumbing
-            </h3>
-            <p class="text-black/90 text-base leading-relaxed mb-6 max-w-lg">
-              Emergency call capture system, service area mapping, and
-              before/after galleries to showcase your reliability and capture
-              urgent service requests instantly and efficiently.
-            </p>
-            <span class="inline-flex items-center gap-2 text-black font-semibold underline hover:no-underline transition-all duration-300">
-              Read More
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </span>
-          </div>
-        </div>
-      </a>
+              <div>
+                <h3 class={`text-3xl font-bold ${textColor} mb-4`}>
+                  {trade.data.hoverTitle}
+                </h3>
+                <p class={`${textOpacity90} text-base leading-relaxed mb-6 max-w-lg`}>
+                  {trade.data.hoverDescription}
+                </p>
+                <Button>
+                  Exlpore Templates
+                </Button>
+              </div>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>
+
+<script>
+  // Handle dynamic hover colors for trade cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const tradeCards = document.querySelectorAll('[id^="trade-"]');
+    
+    tradeCards.forEach(card => {
+      const overlay = card.querySelector('[data-hover-color]') as HTMLElement | null;
+      if (!overlay) return;
+      
+      const hoverColor = overlay.getAttribute('data-hover-color');
+      
+      card.addEventListener('mouseenter', () => {
+        overlay.style.background = `linear-gradient(to top, ${hoverColor}, ${hoverColor}, ${hoverColor})`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        overlay.style.background = 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent)';
+      });
+    });
+  });
+</script>
 
 <style>
   /* Smooth transitions */

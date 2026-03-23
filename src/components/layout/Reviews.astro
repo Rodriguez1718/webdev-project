@@ -1,5 +1,10 @@
 ---
 // Reviews Section with Horizontal Layout
+import { getCollection } from 'astro:content';
+
+// Get all reviews and sort by order
+const allReviews = await getCollection('reviews');
+const reviews = allReviews.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section
@@ -53,498 +58,131 @@
             <div
               class="reviews-track flex transition-transform duration-500 ease-in-out"
             >
-              <!-- Review 1 - HVAC -->
-              <div
-                class="review-slide flex-shrink-0 w-full p-8 lg:p-12 flex flex-col justify-between bg-white"
-              >
-                <div>
-                  <div class="flex items-center justify-between mb-6">
-                    <div>
-                      <span
-                        class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2"
-                        style="background: color-mix(in srgb, var(--helios-orange) 15%, transparent); color: var(--helios-orange);"
-                        >Success Story</span
-                      >
-                      <h3
-                        class="text-2xl font-bold"
-                        style="color: var(--midnight-navy);"
-                      >
-                        HVAC Company Transformation
-                      </h3>
-                    </div>
-                    <div class="flex gap-1 text-xl">
-                      <span style="color: var(--helios-orange);">★★★★★</span>
-                    </div>
-                  </div>
-
-                  <p
-                    class="text-lg leading-relaxed mb-6 font-medium text-[#0A1931]"
-                  >
-                    "CoolAir Pro saw a 340% increase in leads within 3 months of
-                    launching their new website. Our conversion-focused design
-                    and local SEO strategy transformed their online presence.
-                    The leads keep coming!"
-                  </p>
-
-                  <!-- Key Metrics -->
-                  <div
-                    class="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-gray-200"
-                  >
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        340%
+              {reviews.map((review) => (
+                <div
+                  class="review-slide flex-shrink-0 w-full p-8 lg:p-12 flex flex-col justify-between bg-white"
+                >
+                  <div>
+                    <div class="flex items-center justify-between mb-6">
+                      <div>
+                        <span
+                          class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2"
+                          style="background: color-mix(in srgb, var(--helios-orange) 15%, transparent); color: var(--helios-orange);"
+                        >
+                          Success Story
+                        </span>
+                        <h3
+                          class="text-2xl font-bold"
+                          style="color: var(--midnight-navy);"
+                        >
+                          {review.data.title}
+                        </h3>
                       </div>
-                      <div class="text-base text-[#0A1931]">Lead Increase</div>
-                    </div>
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        3 months
-                      </div>
-                      <div class="text-base text-[#0A1931]">
-                        Time to Results
+                      <div class="flex gap-1 text-xl">
+                        <span style="color: var(--helios-orange);">★★★★★</span>
                       </div>
                     </div>
-                  </div>
-                </div>
 
-                <!-- Client Info -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
+                    <p
+                      class="text-lg leading-relaxed mb-6 font-medium text-[#0A1931]"
+                    >
+                      "{review.data.testimonial}"
+                    </p>
+
+                    <!-- Key Metrics -->
                     <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                      style="background: var(--helios-orange);"
+                      class="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-gray-200"
                     >
-                      JM
-                    </div>
-                    <div>
-                      <div
-                        class="font-bold text-base"
-                        style="color: var(--midnight-navy);"
-                      >
-                        Jake Martinez
+                      <div>
+                        <div
+                          class="text-xl font-bold"
+                          style="color: var(--helios-orange);"
+                        >
+                          {review.data.metric1Value}
+                        </div>
+                        <div class="text-base text-[#0A1931]">{review.data.metric1Label}</div>
                       </div>
-                      <div class="text-sm text-[#0A1931]">
-                        CoolAir Pro, Phoenix
+                      <div>
+                        <div
+                          class="text-xl font-bold"
+                          style="color: var(--helios-orange);"
+                        >
+                          {review.data.metric2Value}
+                        </div>
+                        <div class="text-base text-[#0A1931]">
+                          {review.data.metric2Label}
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="flex gap-2">
-                    <button
-                      class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Previous review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button
-                      class="carousel-next-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Next review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Review 2 - Plumbing -->
-              <div
-                class="review-slide flex-shrink-0 w-full p-8 lg:p-12 flex flex-col justify-between bg-white"
-              >
-                <div>
-                  <div class="flex items-center justify-between mb-6">
-                    <div>
-                      <span
-                        class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2"
-                        style="background: color-mix(in srgb, var(--helios-orange) 15%, transparent); color: var(--helios-orange);"
-                        >Success Story</span
-                      >
-                      <h3
-                        class="text-2xl font-bold"
-                        style="color: var(--midnight-navy);"
-                      >
-                        Plumbing Service Growth
-                      </h3>
-                    </div>
-                    <div class="flex gap-1 text-xl">
-                      <span style="color: var(--helios-orange);">★★★★★</span>
-                    </div>
-                  </div>
-
-                  <p
-                    class="text-lg leading-relaxed mb-6 font-medium text-[#0A1931]"
-                  >
-                    "Rapid Plumbing Pro doubled their emergency call volume and
-                    expanded to 3 new service areas after launching their
-                    mobile-optimized website with booking system. Our phone
-                    hasn't stopped ringing!"
-                  </p>
-
-                  <!-- Key Metrics -->
-                  <div
-                    class="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-gray-200"
-                  >
-                    <div>
+                  <!-- Client Info -->
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
                       <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
+                        class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
+                        style="background: var(--helios-orange);"
                       >
-                        200%
+                        {review.data.initials}
                       </div>
-                      <div class="text-base text-[#0A1931]">Call Volume</div>
-                    </div>
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        3 areas
+                      <div>
+                        <div
+                          class="font-bold text-base"
+                          style="color: var(--midnight-navy);"
+                        >
+                          {review.data.clientName}
+                        </div>
+                        <div class="text-sm text-[#0A1931]">
+                          {review.data.companyName}, {review.data.location}
+                        </div>
                       </div>
-                      <div class="text-base text-[#0A1931]">Expansion</div>
                     </div>
                   </div>
                 </div>
-
-                <!-- Client Info -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                      style="background: var(--helios-orange);"
-                    >
-                      SR
-                    </div>
-                    <div>
-                      <div
-                        class="font-bold text-base"
-                        style="color: var(--midnight-navy);"
-                      >
-                        Sarah Rodriguez
-                      </div>
-                      <div class="text-sm text-[#0A1931]">
-                        Rapid Plumbing, Denver
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex gap-2">
-                    <button
-                      class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Previous review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button
-                      class="carousel-next-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Next review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Review 3 - HVAC -->
-              <div
-                class="review-slide flex-shrink-0 w-full p-8 lg:p-12 flex flex-col justify-between bg-white"
-              >
-                <div>
-                  <div class="flex items-center justify-between mb-6">
-                    <div>
-                      <span
-                        class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2"
-                        style="background: color-mix(in srgb, var(--helios-orange) 15%, transparent); color: var(--helios-orange);"
-                        >Success Story</span
-                      >
-                      <h3
-                        class="text-2xl font-bold"
-                        style="color: var(--midnight-navy);"
-                      >
-                        HVAC Expansion Success
-                      </h3>
-                    </div>
-                    <div class="flex gap-1 text-xl">
-                      <span style="color: var(--helios-orange);">★★★★★</span>
-                    </div>
-                  </div>
-
-                  <p
-                    class="text-lg leading-relaxed mb-6 font-medium text-[#0A1931]"
-                  >
-                    "ComfortZone HVAC tripled their service requests and
-                    expanded their team by 40% after their new website launched
-                    with advanced scheduling and customer portal features. We're
-                    booking jobs weeks in advance!"
-                  </p>
-
-                  <!-- Key Metrics -->
-                  <div
-                    class="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-gray-200"
-                  >
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        300%
-                      </div>
-                      <div class="text-base text-[#0A1931]">
-                        Service Requests
-                      </div>
-                    </div>
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        40%
-                      </div>
-                      <div class="text-base text-[#0A1931]">Team Growth</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Client Info -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                      style="background: var(--helios-orange);"
-                    >
-                      DK
-                    </div>
-                    <div>
-                      <div
-                        class="font-bold text-base"
-                        style="color: var(--midnight-navy);"
-                      >
-                        David Kim
-                      </div>
-                      <div class="text-sm text-[#0A1931]">
-                        ComfortZone HVAC, Austin
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex gap-2">
-                    <button
-                      class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Previous review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button
-                      class="carousel-next-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Next review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Review 4 - Plumbing -->
-              <div
-                class="review-slide flex-shrink-0 w-full p-8 lg:p-12 flex flex-col justify-between bg-white"
-              >
-                <div>
-                  <div class="flex items-center justify-between mb-6">
-                    <div>
-                      <span
-                        class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-2"
-                        style="background: color-mix(in srgb, var(--helios-orange) 15%, transparent); color: var(--helios-orange);"
-                        >Success Story</span
-                      >
-                      <h3
-                        class="text-2xl font-bold"
-                        style="color: var(--midnight-navy);"
-                      >
-                        Emergency Plumbing Growth
-                      </h3>
-                    </div>
-                    <div class="flex gap-1 text-xl">
-                      <span style="color: var(--helios-orange);">★★★★★</span>
-                    </div>
-                  </div>
-
-                  <p
-                    class="text-lg leading-relaxed mb-6 font-medium text-[#0A1931]"
-                  >
-                    "ProFlow Plumbing increased their emergency call response
-                    rate by 180% with a website that highlights their 24/7
-                    availability and rapid response times. Customers trust us
-                    immediately!"
-                  </p>
-
-                  <!-- Key Metrics -->
-                  <div
-                    class="grid grid-cols-2 gap-3 mb-6 pb-6 border-b border-gray-200"
-                  >
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        180%
-                      </div>
-                      <div class="text-base text-[#0A1931]">Response Rate</div>
-                    </div>
-                    <div>
-                      <div
-                        class="text-xl font-bold"
-                        style="color: var(--helios-orange);"
-                      >
-                        24/7
-                      </div>
-                      <div class="text-base text-[#0A1931]">Availability</div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Client Info -->
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
-                      style="background: var(--helios-orange);"
-                    >
-                      MC
-                    </div>
-                    <div>
-                      <div
-                        class="font-bold text-base"
-                        style="color: var(--midnight-navy);"
-                      >
-                        Marcus Chen
-                      </div>
-                      <div class="text-sm text-[#0A1931]">
-                        ProFlow Plumbing, Portland
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex gap-2">
-                    <button
-                      class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Previous review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 19l-7-7 7-7"></path>
-                      </svg>
-                    </button>
-                    <button
-                      class="carousel-next-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer"
-                      style="background: var(--helios-orange);"
-                      aria-label="Next review"
-                    >
-                      <svg
-                        class="w-5 h-5 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5l7 7-7 7"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
+          </div>
+
+          <!-- Fixed Navigation Buttons aligned with Client Info -->
+          <div class="absolute bottom-8 lg:bottom-12 right-8 lg:right-12 z-10 flex gap-2">
+            <button
+              class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer shadow-lg"
+              style="background: var(--helios-orange);"
+              aria-label="Previous review"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button
+              class="carousel-next-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer shadow-lg"
+              style="background: var(--helios-orange);"
+              aria-label="Next review"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

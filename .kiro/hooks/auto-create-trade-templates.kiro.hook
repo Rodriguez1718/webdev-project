@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Auto-create Trade Template Folder",
+  "description": "When a new trade markdown file is created in src/content/trades/, automatically create a corresponding template folder in src/content/templates/ with a placeholder template file",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "src/content/trades/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A new trade markdown file has been created. Extract the trade name from the filename (e.g., if electrician.md was created, the trade is \"Electrician\"). Then create a new folder at src/content/templates/[trade-name-lowercase]/ and add a placeholder template markdown file named [trade-name]-template-1.md with the following frontmatter structure:\n---\ntitle: \"[Trade Name] Website Template 1\"\ntrade: \"[Trade Name]\"\ndescription: \"Professional [trade name] website template with modern design and conversion optimization.\"\nthumbnail: \"/images/img1.avif\"\nliveDemoUrl: \"https://example.com\"\nmainSiteUrl: \"https://example.com\"\ncategory: \"Landing Page\"\n---\n\nMake sure the trade name in the frontmatter matches the trade enum values in content.config.ts (General Construction, Remodelling, Electrician, Plumbing, HVAC, Home Builders, Roofing)."
+  }
+}
