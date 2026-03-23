@@ -36,14 +36,32 @@ const legal = defineCollection({
 const trades = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/trades' }),
   schema: z.object({
-    title: z.string(),
-    trade: z.enum(tradeOptions),
-    shortTitle: z.string(),
-    description: z.string(),
+    name: z.string(),
+    slug: z.string(),
+    tagline: z.string(),
+    hoverTitle: z.string(),
     hoverDescription: z.string(),
     image: z.string(),
-    overlayColor: z.enum(['navy', 'orange']),
-    slug: z.string(),
+    hoverColor: z.string(),
+    order: z.number(),
+  }),
+});
+
+const reviews = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/reviews' }),
+  schema: z.object({
+    clientName: z.string(),
+    companyName: z.string(),
+    location: z.string(),
+    initials: z.string(),
+    title: z.string(),
+    testimonial: z.string(),
+    metric1Value: z.string(),
+    metric1Label: z.string(),
+    metric2Value: z.string(),
+    metric2Label: z.string(),
+    trade: z.enum(['HVAC', 'Plumbing']),
+    order: z.number(),
   }),
 });
 
@@ -51,4 +69,5 @@ export const collections = {
   templates,
   legal,
   trades,
+  reviews,
 };
