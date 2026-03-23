@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import Button from "../ui/Button.astro";
 import logoImage from "../../assets/logo.avif";
 import { getTradeIcon } from "../../utils/tradeIcons";
 
-const trades = await getCollection('trades');
+const trades = await getCollection("trades");
 ---
 
 <nav
@@ -78,30 +78,36 @@ const trades = await getCollection('trades');
                         class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
                     >
                         <div class="py-2">
-                            {trades.map((trade) => (
-                                <a
-                                    href={`/trades-we-serve/${trade.data.slug}`}
-                                    class="flex items-center px-4 py-3 text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 transition-colors duration-200"
-                                >
-                                    <svg
-                                        class="w-6 h-6 mr-3 shrink-0"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
+                            {
+                                trades.map((trade) => (
+                                    <a
+                                        href={`/trades-we-serve/${trade.data.slug}`}
+                                        class="flex items-center px-4 py-3 text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 transition-colors duration-200"
                                     >
-                                        <g set:html={getTradeIcon(trade.data.trade)} />
-                                    </svg>
-                                    <div>
-                                        <div class="font-medium text-[#0A1931]">
-                                            {trade.data.title}
+                                        <svg
+                                            class="w-6 h-6 mr-3 shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <g
+                                                set:html={getTradeIcon(
+                                                    trade.data.trade,
+                                                )}
+                                            />
+                                        </svg>
+                                        <div>
+                                            <div class="font-medium text-[#0A1931]">
+                                                {trade.data.title}
+                                            </div>
+                                            <div class="text-base text-gray-500">
+                                                {trade.data.shortTitle}
+                                            </div>
                                         </div>
-                                        <div class="text-base text-gray-500">
-                                            {trade.data.shortTitle}
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
+                                    </a>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -123,14 +129,6 @@ const trades = await getCollection('trades');
                         About
                     </a>
                 </div>
-                <a
-                    href="/contact"
-                    class="navbar-link nav-item font-primary px-3 py-2 font-semibold transition-colors duration-200 whitespace-nowrap"
-                    style="font-size: 16px;"
-                    data-path="/contact"
-                >
-                    Contact
-                </a>
             </div>
 
             <!-- CTA Button -->
@@ -193,7 +191,9 @@ const trades = await getCollection('trades');
                 style="font-size: 15px;"
                 data-path="/our-work">Our Work</a
             >
-            <div class="mobile-nav-item-wrapper flex items-center justify-between w-full">
+            <div
+                class="mobile-nav-item-wrapper flex items-center justify-between w-full"
+            >
                 <a
                     href="/trades-we-serve"
                     class="mobile-nav-item font-primary text-[#0A1931] hover:text-[#F48C06] hover:bg-gray-50 px-3 py-2 font-semibold transition-colors duration-200 flex-1"
@@ -224,28 +224,32 @@ const trades = await getCollection('trades');
                 class="mobile-trades-dropdown overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 border-l-4 border-[#F48C06]"
                 style="max-height: 0;"
             >
-                {trades.map((trade) => (
-                    <a
-                        href={`/trades-we-serve/${trade.data.slug}`}
-                        class="flex items-center px-6 py-3 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
-                    >
-                        <svg
-                            class="w-6 h-6 mr-3 shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                {
+                    trades.map((trade) => (
+                        <a
+                            href={`/trades-we-serve/${trade.data.slug}`}
+                            class="flex items-center px-6 py-3 text-[#0A1931] hover:text-[#F48C06] transition-colors duration-200"
                         >
-                            <g set:html={getTradeIcon(trade.data.trade)} />
-                        </svg>
-                        <div>
-                            <div class="font-medium">{trade.data.title}</div>
-                            <div class="text-base text-gray-500">
-                                {trade.data.shortTitle}
+                            <svg
+                                class="w-6 h-6 mr-3 shrink-0"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g set:html={getTradeIcon(trade.data.trade)} />
+                            </svg>
+                            <div>
+                                <div class="font-medium">
+                                    {trade.data.title}
+                                </div>
+                                <div class="text-base text-gray-500">
+                                    {trade.data.shortTitle}
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                ))}
+                        </a>
+                    ))
+                }
             </div>
             <a
                 href="/what-we-do"
@@ -363,41 +367,53 @@ const trades = await getCollection('trades');
         // Mobile trades dropdown toggle
         if (tradesToggle && tradesDropdown) {
             // Add transition end listener to update mobile menu height
-            tradesDropdown.addEventListener("transitionend", function() {
-                const mobileMenu = document.getElementById("mobile-menu") as HTMLElement | null;
+            tradesDropdown.addEventListener("transitionend", function () {
+                const mobileMenu = document.getElementById(
+                    "mobile-menu",
+                ) as HTMLElement | null;
                 if (mobileMenu && mobileMenu.classList.contains("open")) {
-                    const menuContent = mobileMenu.querySelector("div") as HTMLElement | null;
+                    const menuContent = mobileMenu.querySelector(
+                        "div",
+                    ) as HTMLElement | null;
                     if (menuContent) {
-                        mobileMenu.style.maxHeight = menuContent.scrollHeight + "px";
+                        mobileMenu.style.maxHeight =
+                            menuContent.scrollHeight + "px";
                     }
                 }
             });
-            
+
             tradesToggle.addEventListener("click", function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const dropdown = tradesDropdown as HTMLElement;
-                const isCurrentlyOpen = dropdown.style.maxHeight && dropdown.style.maxHeight !== "0px";
-                
+                const isCurrentlyOpen =
+                    dropdown.style.maxHeight &&
+                    dropdown.style.maxHeight !== "0px";
+
                 // Toggle dropdown with smooth animation
                 if (!isCurrentlyOpen) {
                     dropdown.style.maxHeight = dropdown.scrollHeight + "px";
                 } else {
                     dropdown.style.maxHeight = "0px";
                 }
-                
+
                 if (tradesChevron) {
                     tradesChevron.classList.toggle("rotate-180");
                 }
-                
+
                 // Immediately start expanding mobile menu
-                const mobileMenu = document.getElementById("mobile-menu") as HTMLElement | null;
+                const mobileMenu = document.getElementById(
+                    "mobile-menu",
+                ) as HTMLElement | null;
                 if (mobileMenu && mobileMenu.classList.contains("open")) {
                     requestAnimationFrame(() => {
-                        const menuContent = mobileMenu.querySelector("div") as HTMLElement | null;
+                        const menuContent = mobileMenu.querySelector(
+                            "div",
+                        ) as HTMLElement | null;
                         if (menuContent) {
-                            mobileMenu.style.maxHeight = menuContent.scrollHeight + "px";
+                            mobileMenu.style.maxHeight =
+                                menuContent.scrollHeight + "px";
                         }
                     });
                 }
