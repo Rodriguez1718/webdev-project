@@ -37,8 +37,27 @@ const trades = defineCollection({
   }),
 });
 
+const reviews = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/reviews' }),
+  schema: z.object({
+    clientName: z.string(),
+    companyName: z.string(),
+    location: z.string(),
+    initials: z.string(),
+    title: z.string(),
+    testimonial: z.string(),
+    metric1Value: z.string(),
+    metric1Label: z.string(),
+    metric2Value: z.string(),
+    metric2Label: z.string(),
+    trade: z.enum(['HVAC', 'Plumbing']),
+    order: z.number(),
+  }),
+});
+
 export const collections = {
   templates,
   legal,
   trades,
+  reviews,
 };
