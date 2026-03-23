@@ -1,13 +1,12 @@
 ---
 // Values Component - Showcases company values and mission
-import Card from "../ui/Card.astro";
+import FeatureCard from "../ui/FeatureCard.astro";
 
 export interface Props {
   title?: string;
   highlightWord?: string;
   description?: string;
   values?: Array<{
-    icon: string;
     title: string;
     description: string;
   }>;
@@ -19,36 +18,29 @@ const {
   description = "We're committed to delivering exceptional results through our core values and unwavering dedication to your success.",
   values = [
     {
-      icon: "target",
       title: "Results-Driven",
-      description: "We focus on measurable outcomes that directly impact your bottom line and business growth.",
+      description:
+        "We focus on measurable outcomes that directly impact your bottom line and business growth.",
     },
     {
-      icon: "users",
       title: "Client-Focused",
-      description: "Your success is our success. We build lasting partnerships based on trust and transparency.",
+      description:
+        "Your success is our success. We build lasting partnerships based on trust and transparency.",
     },
     {
-      icon: "zap",
-      title: "Fast & Efficient",
-      description: "Quick turnaround times without compromising quality. We respect your time and deadlines.",
-    },
-    {
-      icon: "shield",
       title: "Reliable Support",
-      description: "24/7 dedicated support team ready to help you succeed at every step of your journey.",
+      description:
+        "24/7 dedicated support team ready to help you succeed at every step of your journey.",
+    },
+    {
+      title: "Fast & Efficient",
+      description:
+        "Quick turnaround times without compromising quality. We respect your time and deadlines.",
     },
   ],
 } = Astro.props;
 
 const titleParts = title.split(highlightWord);
-
-const iconPaths: Record<string, string> = {
-  target: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
-  users: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
-  zap: "M13 10V3L4 14h7v7l9-11h-7z",
-  shield: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-};
 ---
 
 <section class="py-20 bg-gradient-to-br from-[#0a1931] to-[#1a2a4a]">
@@ -62,28 +54,31 @@ const iconPaths: Record<string, string> = {
       >
         OUR VALUES
       </span>
-      <h2 id="values-title" class="text-4xl md:text-5xl font-bold text-white mb-6 mt-4">
-        {titleParts[0]}<span class="text-[#F48C06]">{highlightWord}</span>{titleParts[1]}
+      <h2
+        id="values-title"
+        class="text-4xl md:text-5xl font-bold text-white mb-6 mt-4"
+      >
+        {titleParts[0]}
+        <span class="text-[#F48C06]">{highlightWord}</span>
+        {titleParts[1]}
       </h2>
-            <p id="values-desc" class="text-lg text-white max-w-3xl mx-auto">
-                {description}
-            </p>
+      <p id="values-desc" class="text-lg text-white max-w-3xl mx-auto">
+        {description}
+      </p>
     </div>
 
     <!-- Values Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {values.map((value, index) => (
-        <div id={`value-card-${index + 1}`}>
-        <Card title={value.title} description={value.description}>
-          <!-- Icon -->
-          <div class="w-16 h-16 rounded-full bg-gradient-to-br from-[#F48C06] to-[#ff6b35] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[value.icon] || iconPaths.target}></path>
-            </svg>
-          </div>
-        </Card>
-        </div>
-      ))}
+      {
+        values.map((value, index) => (
+          <FeatureCard
+            id={`value-card-${index + 1}`}
+            title={value.title}
+            description={value.description}
+            variant="value"
+          />
+        ))
+      }
     </div>
   </div>
 </section>

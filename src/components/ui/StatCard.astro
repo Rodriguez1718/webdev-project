@@ -1,0 +1,57 @@
+---
+interface Props {
+    title: string;
+    target: number;
+    suffix: string;
+    description: string;
+    icon: string;
+    id: string;
+}
+
+const { title, target, description, icon, id, suffix } = Astro.props;
+---
+
+<div
+    {id}
+    class="bg-(--midnight-navy) hover:bg-(--helios-orange) p-8 rounded-3xl transition-all duration-400 relative overflow-hidden border border-white/10 min-h-70 flex flex-col group hover:shadow-[0_15px_35px_rgba(244,140,6,0.3)]"
+>
+    <div class="flex justify-between items-start mb-8 flex-1">
+        <h4
+            class="text-white text-xl font-semibold leading-tight max-w-[60%] transition-colors duration-400"
+        >
+            {title}
+        </h4>
+        <div
+            class="text-(--steel-pewter) opacity-60 transition-all duration-400 group-hover:text-white group-hover:opacity-100 group-hover:scale-105"
+        >
+            <svg
+                class="w-12 h-12 text-white stroke-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                set:html={icon}
+            />
+        </div>
+    </div>
+    <div
+        class="h-px bg-(--steel-pewter) mb-8 w-full opacity-30 transition-all duration-400 group-hover:bg-white group-hover:opacity-50"
+    >
+    </div>
+    <div class="mt-auto">
+        <div
+            class="text-6xl font-extrabold text-white leading-none mb-2 flex items-baseline transition-colors duration-400"
+            data-target={target}
+            data-suffix={suffix}
+        >
+            0<span
+                class="text-white text-5xl ml-1 transition-colors duration-400"
+                >{suffix}</span
+            >
+        </div>
+        <div
+            class="text-(--steel-pewter) text-base font-medium leading-tight transition-colors duration-400 group-hover:text-white"
+        >
+            {description}
+        </div>
+    </div>
+</div>
