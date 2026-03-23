@@ -281,8 +281,8 @@ const stats = [
         });
       },
       {
-        threshold: 0.3,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px",
       },
     );
 
@@ -291,6 +291,25 @@ const stats = [
     if (statsSection) {
       observer.observe(statsSection);
     }
+
+    // Fallback for mobile devices - trigger animation after a delay if not already animated
+    setTimeout(() => {
+      const counters = document.querySelectorAll("[data-target]");
+      counters.forEach(function (counter) {
+        if (!counter.classList.contains("animated")) {
+          const targetAttr = counter.getAttribute("data-target");
+          const suffixAttr = counter.getAttribute("data-suffix");
+
+          if (targetAttr) {
+            const target = parseInt(targetAttr, 10);
+            const suffix = suffixAttr || "";
+
+            counter.classList.add("animated");
+            animateCounter(counter as HTMLElement, target, suffix, 2000);
+          }
+        }
+      });
+    }, 3000); // Trigger after 3 seconds if intersection observer hasn't fired
   });
 </script>
 
