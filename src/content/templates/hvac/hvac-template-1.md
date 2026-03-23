@@ -2,8 +2,8 @@
 title: "HVAC Website Template 1"
 trade: "HVAC"
 description: "Professional HVAC website template with modern design and conversion optimization."
-thumbnail: "/images/img1.avif"
-liveDemoUrl: "https://example.com"
-mainSiteUrl: "https://example.com"
+thumbnail: "/images/hvac1.avif"
+liveDemoUrl: "https://hvac-template-1-seven.vercel.app/"
+mainSiteUrl: "https://hvac-template-1-seven.vercel.app/"
 category: "Landing Page"
 ---

@@ -6,12 +6,20 @@ import TemplateCard from "../ui/TemplateCard.astro";
 
 // Get all templates and filter by trade
 const allTemplates = await getCollection("templates");
-const hvacTemplates = allTemplates.filter(
-    (template) => template.data.trade.toLowerCase() === "hvac",
+
+// Group templates by trade and get the first one from each
+const templatesByTrade = allTemplates.reduce(
+    (acc, template) => {
+        const trade = template.data.trade.toLowerCase();
+        if (!acc[trade]) {
+            acc[trade] = template;
+        }
+        return acc;
+    },
+    {} as Record<string, (typeof allTemplates)[0]>,
 );
-const plumbingTemplates = allTemplates.filter(
-    (template) => template.data.trade.toLowerCase() === "plumbing",
-);
+
+const tradeTemplates = Object.values(templatesByTrade);
 ---
 
 <section class="py-20 bg-parchment">
@@ -25,111 +33,42 @@ const plumbingTemplates = allTemplates.filter(
             >
                 FEATURED WORK
             </span>
-            <h2 id="our-work-title" class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4">
+            <h2
+                id="our-work-title"
+                class="text-4xl md:text-5xl font-bold text-[#0A1931] mb-6 mt-4"
+            >
                 Our <span style="color: var(--helios-orange);">Works</span>
             </h2>
-            <p id="our-work-desc" class="text-[#0A1931] max-w-5xl mx-auto" style="font-size: 22px;">
+            <p
+                id="our-work-desc"
+                class="text-[#0A1931] max-w-5xl mx-auto"
+                style="font-size: 22px;"
+            >
                 Explore our portfolio of professional websites designed for HVAC
                 and plumbing contractors.
             </p>
         </div>
 
-        <!-- Combined Templates Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- First Row - 3 templates -->
+        <!-- Templates Grid - One per Trade -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {
-                hvacTemplates.length > 0 ? (
-                    hvacTemplates
-                        .slice(0, 3)
-                        .map((template) => (
-                            <TemplateCard
-                                href="/trades-we-serve/hvac"
-                                imageSrc={
-                                    template.data.thumbnail ||
-                                    "/images/web1.png"
-                                }
-                                imageAlt={template.data.title}
-                                title="View HVAC Templates"
-                                description="Explore all HVAC designs →"
-                                trade="hvac"
-                            />
-                        ))
-                ) : (
-                    <>
+                tradeTemplates.map((template) => {
+                    const tradeLower = template.data.trade.toLowerCase() as
+                        | "hvac"
+                        | "plumbing";
+                    return (
                         <TemplateCard
-                            href="/trades-we-serve/hvac"
-                            imageSrc="/images/web1.png"
-                            imageAlt="HVAC Website Template 1"
-                            title="View HVAC Templates"
-                            description="Explore all HVAC designs →"
-                            trade="hvac"
+                            href={`/trades-we-serve/${tradeLower}`}
+                            imageSrc={
+                                template.data.thumbnail || "/images/web1.png"
+                            }
+                            imageAlt={template.data.title}
+                            title={`View ${template.data.trade} Templates`}
+                            description={`Explore all ${tradeLower} designs →`}
+                            trade={tradeLower}
                         />
-                        <TemplateCard
-                            href="/trades-we-serve/hvac"
-                            imageSrc="/images/web2.png"
-                            imageAlt="HVAC Website Template 2"
-                            title="View HVAC Templates"
-                            description="Explore all HVAC designs →"
-                            trade="hvac"
-                        />
-                        <TemplateCard
-                            href="/trades-we-serve/hvac"
-                            imageSrc="/images/web1.png"
-                            imageAlt="HVAC Website Template 3"
-                            title="View HVAC Templates"
-                            description="Explore all HVAC designs →"
-                            trade="hvac"
-                        />
-                    </>
-                )
-            }
-            
-            <!-- Second Row - 2 templates (will wrap to next row) -->
-            {
-                plumbingTemplates.length > 0 ? (
-                    plumbingTemplates
-                        .slice(0, 3)
-                        .map((template) => (
-                            <TemplateCard
-                                href="/trades-we-serve/plumbing"
-                                imageSrc={
-                                    template.data.thumbnail ||
-                                    "/images/web2.png"
-                                }
-                                imageAlt={template.data.title}
-                                title="View Plumbing Templates"
-                                description="Explore all plumbing designs →"
-                                trade="plumbing"
-                            />
-                        ))
-                ) : (
-                    <>
-                        <TemplateCard
-                            href="/trades-we-serve/plumbing"
-                            imageSrc="/images/web2.png"
-                            imageAlt="Plumbing Website Template 1"
-                            title="View Plumbing Templates"
-                            description="Explore all plumbing designs →"
-                            trade="plumbing"
-                        />
-                        <TemplateCard
-                            href="/trades-we-serve/plumbing"
-                            imageSrc="/images/web1.png"
-                            imageAlt="Plumbing Website Template 2"
-                            title="View Plumbing Templates"
-                            description="Explore all plumbing designs →"
-                            trade="plumbing"
-                        />
-                        <TemplateCard
-                            href="/trades-we-serve/plumbing"
-                            imageSrc="/images/web2.png"
-                            imageAlt="Plumbing Website Template 3"
-                            title="View Plumbing Templates"
-                            description="Explore all plumbing designs →"
-                            trade="plumbing"
-                        />
-                    </>
-                )
+                    );
+                })
             }
         </div>
 
