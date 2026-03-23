@@ -16,7 +16,8 @@ export async function getStaticPaths() {
 }
 
 const { trade } = Astro.props;
-const { title, slug } = trade.data;
+const { name, slug } = trade.data;
+const title = name;
 
 // Default benefits for any trade
 const defaultBenefits = [

@@ -12,7 +12,7 @@ const { trade } = Astro.props;
 // Get all templates and filter by trade
 const allTemplates = await getCollection("templates");
 const tradeTemplates = allTemplates.filter(
-    (template) => template.data.trade.toLowerCase() === trade.toLowerCase(),
+    (template) => template.data.trade && template.data.trade.toLowerCase() === trade.toLowerCase(),
 );
 
 // Set colors based on trade - default to orange for new trades
