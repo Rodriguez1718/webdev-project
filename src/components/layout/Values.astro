@@ -15,7 +15,7 @@ export interface Props {
 
 const {
   title = "Why Choose Us",
-  highlightWord = "Choose",
+  highlightWord = "Choose Us",
   description = "We're committed to delivering exceptional results through our core values and unwavering dedication to your success.",
   values = [
     {
@@ -63,9 +63,7 @@ const iconPaths: Record<string, string> = {
         OUR VALUES
       </span>
       <h2 id="values-title" class="text-4xl md:text-5xl font-bold text-white mb-6 mt-4">
-        {titleParts[0]}
-        <span class="text-[#F48C06]">{highlightWord}</span>
-        {titleParts[1]}
+        {titleParts[0]}<span class="text-[#F48C06]">{highlightWord}</span>{titleParts[1]}
       </h2>
             <p id="values-desc" class="text-lg text-white max-w-3xl mx-auto">
                 {description}
