@@ -1,7 +1,7 @@
 ---
 // ServicePillars Component - Core service offerings for marketing agency
 // Displays three key pillars: Template Architecture, Conversion Optimization, Local SEO Integration
-import Card from "../ui/Card.astro";
+import FeatureCard from "../ui/FeatureCard.astro";
 
 export interface Props {
     eyebrow?: string;
@@ -62,7 +62,7 @@ const pillars = [
             {
                 pillars.map((pillar, index) => (
                     <div id={`service-pillar-card-${index + 1}`}>
-                    <Card title={pillar.title} description={pillar.description}>
+                    <FeatureCard title={pillar.title} description={pillar.description}>
                         <div class="flex flex-col items-start mb-6">
                             <div
                                 class="w-16 h-16 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110 mb-4"
@@ -127,7 +127,7 @@ const pillars = [
                                 )}
                             </div>
                         </div>
-                    </Card>
+                    </FeatureCard>
                     </div>
                 ))
             }
