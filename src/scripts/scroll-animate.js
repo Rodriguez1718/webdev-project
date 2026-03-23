@@ -168,7 +168,6 @@ function animateText(id, config = {}) {
   temp.innerHTML = originalHTML;
 
   const wordElements = [];
-  let wordIndex = 0;
 
   // Process all child nodes (text and elements)
   function processNode(node) {
@@ -213,6 +212,8 @@ function animateText(id, config = {}) {
     }
   }
 
+  const underlineElements = [];
+
   function processNodeInElement(node, parentEl) {
     if (node.nodeType === Node.TEXT_NODE) {
       const text = node.textContent;
@@ -246,6 +247,26 @@ function animateText(id, config = {}) {
           parentEl.appendChild(document.createTextNode(" "));
         }
       });
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      // Preserve non-text elements (like divs for underlines)
+      const clone = node.cloneNode(true);
+      
+      // Check if this is an underline element (has absolute positioning and bottom positioning)
+      const isUnderline = clone.classList && (
+        Array.from(clone.classList).some(c => c.includes('bottom')) ||
+        clone.style.position === 'absolute'
+      );
+      
+      if (isUnderline) {
+        // Hide underline initially and prepare for animation
+        clone.style.opacity = "0";
+        clone.style.transform = "scaleX(0)";
+        clone.style.transformOrigin = "left";
+        clone.style.transition = `opacity 400ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1)`;
+        underlineElements.push(clone);
+      }
+      
+      parentEl.appendChild(clone);
     }
   }
 
@@ -259,6 +280,10 @@ function animateText(id, config = {}) {
         if (!entry.isIntersecting) return;
 
         setTimeout(() => {
+          // Calculate when the last word starts animating (not when it finishes)
+          const lastWordStartTime = (wordElements.length - 1) * opts.wordDelay;
+          
+          // Animate text words
           wordElements.forEach((wordEl, idx) => {
             const chars = wordEl.querySelectorAll("div");
             
@@ -271,6 +296,16 @@ function animateText(id, config = {}) {
               });
             }, idx * opts.wordDelay);
           });
+          
+          // Animate underlines shortly after the last word starts (not after it finishes)
+          if (underlineElements.length > 0) {
+            setTimeout(() => {
+              underlineElements.forEach((underline) => {
+                underline.style.opacity = "1";
+                underline.style.transform = "scaleX(1)";
+              });
+            }, lastWordStartTime + 200); // Start 200ms after last word begins
+          }
         }, opts.startDelay);
 
         if (opts.once) observer.unobserve(el);

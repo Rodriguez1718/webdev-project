@@ -29,7 +29,7 @@ const baseClasses = `
   inline-flex items-center justify-center gap-2 font-primary font-semibold
   border-none rounded-xl cursor-pointer select-none
   focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wider
-  relative overflow-hidden
+  relative
 `;
 
 const variantClasses = {
@@ -90,6 +90,7 @@ const Tag = href ? "a" : "button";
     position: relative;
     transition: all 0.3s ease;
     color: #ffffff;
+    overflow: hidden;
   }
 
   .btn-swipe::before {
@@ -103,6 +104,7 @@ const Tag = href ? "a" : "button";
     transition: left 0.3s ease;
     border-radius: inherit;
     z-index: 0;
+    overflow: hidden;
   }
 
   .btn-swipe:hover::before {
@@ -116,7 +118,6 @@ const Tag = href ? "a" : "button";
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    white-space: nowrap;
   }
 
   .btn-swipe:hover .btn-content {
