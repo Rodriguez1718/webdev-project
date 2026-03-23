@@ -23,7 +23,22 @@ const legal = defineCollection({
   }),
 });
 
+const trades = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/trades' }),
+  schema: z.object({
+    name: z.string(),
+    slug: z.string(),
+    tagline: z.string(),
+    hoverTitle: z.string(),
+    hoverDescription: z.string(),
+    image: z.string(),
+    hoverColor: z.string(),
+    order: z.number(),
+  }),
+});
+
 export const collections = {
   templates,
   legal,
+  trades,
 };
