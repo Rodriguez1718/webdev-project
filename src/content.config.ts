@@ -14,6 +14,16 @@ const templates = defineCollection({
   }),
 });
 
+const legal = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/legal' }),
+  schema: z.object({
+    title: z.string(),
+    lastUpdated: z.string().optional(),
+    description: z.string().optional(),
+  }),
+});
+
 export const collections = {
   templates,
+  legal,
 };
