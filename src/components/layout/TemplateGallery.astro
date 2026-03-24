@@ -47,7 +47,7 @@ const tradeName = trade.charAt(0).toUpperCase() + trade.slice(1);
             tradeTemplates.length > 0 ? (
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     {tradeTemplates.map((template, index) => (
-                        <div id={`template-card-${index + 1}`} class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#99B0BB]/10 overflow-hidden">
+                        <div id={`template-card-${index + 1}`} class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#99B0BB]/10 overflow-hidden flex flex-col h-full">
                             {/* Template Image */}
                             <div class="relative h-64 overflow-hidden bg-gray-100">
                                 <img
@@ -71,14 +71,14 @@ const tradeName = trade.charAt(0).toUpperCase() + trade.slice(1);
                             </div>
 
                             {/* Template Info */}
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col flex-1">
                                 {/* Title */}
                                 <h3 class="text-xl md:text-2xl font-bold text-[#0A1931] mb-3">
                                     {template.data.title}
                                 </h3>
 
                                 {/* Description */}
-                                <p class="text-[#0A1931] text-base leading-relaxed mb-6">
+                                <p class="text-[#0A1931] text-base leading-relaxed mb-6 flex-1">
                                     {template.data.description}
                                 </p>
 
@@ -88,7 +88,7 @@ const tradeName = trade.charAt(0).toUpperCase() + trade.slice(1);
                                         href={template.data.liveDemoUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-base"
+                                        class="inline-flex items-center justify-center gap-2 w-full px-6 py-3 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-base mt-auto"
                                         style={`background-color: ${accentColor}; color: ${trade === "hvac" ? "white" : "black"};`}
                                     >
                                         <svg

@@ -72,8 +72,8 @@ const variantStyles = {
         iconContainer:
             "w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl transition-all duration-300",
         iconSize: "w-7 h-7",
-        title: "text-xl font-bold text-[#0A1931] mb-3 group-hover:text-[#F48C06] transition-colors duration-300",
-        description: "text-base text-[#0A1931] leading-relaxed",
+        title: "font-bold text-[#0A1931] mb-3 group-hover:text-[#F48C06] transition-colors duration-300",
+        description: "text-[#0A1931] leading-relaxed",
     },
     pillar: {
         container:
@@ -128,10 +128,10 @@ const styles = variantStyles[variant];
 
         <!-- Content -->
         <div class="relative">
-            <h4 class={styles.title}>
+            <h4 class={styles.title} style="font-size: 20px;">
                 {title}
             </h4>
-            <p class={styles.description}>
+            <p class={styles.description} style="font-size: 18px;">
                 {description}
             </p>
         </div>
