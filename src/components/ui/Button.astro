@@ -10,6 +10,9 @@ interface Props {
   class?: string;
   ariaLabel?: string;
   type?: "button" | "submit" | "reset";
+  hoverAccent?: string;
+  theme?: "light" | "dark";
+  scrollAdaptive?: boolean;
 }
 
 const {
@@ -23,6 +26,9 @@ const {
   class: className = "",
   ariaLabel,
   type = "button",
+  hoverAccent,
+  theme = "dark",
+  scrollAdaptive = false,
 } = Astro.props;
 
 const baseClasses = `
@@ -69,6 +75,14 @@ const allClasses = [
   .trim();
 
 const Tag = href ? "a" : "button";
+
+// Background color themes for hover effects
+const hoverThemes = {
+  light: "linear-gradient(to right, #ffffff, #f8f9fa)",
+  dark: "linear-gradient(to right, var(--midnight-navy), var(--steel-blue))",
+};
+
+const currentHoverBackground = hoverThemes[theme];
 ---
 
 <Tag
@@ -77,7 +91,11 @@ const Tag = href ? "a" : "button";
   disabled={!href ? disabled : undefined}
   aria-disabled={disabled}
   aria-label={ariaLabel}
-  class={allClasses}
+  class={`${allClasses} ${theme === 'light' ? 'btn-light-theme' : ''} ${scrollAdaptive ? 'btn-scroll-adaptive' : ''}`}
+  style={scrollAdaptive ? 
+    (hoverAccent ? `--hover-accent: ${hoverAccent}` : undefined) : 
+    (hoverAccent ? `--hover-accent: ${hoverAccent}; --hover-background: ${currentHoverBackground}` : `--hover-background: ${currentHoverBackground}`)
+  }
 >
   <span class="btn-content">
     <slot />
@@ -100,11 +118,16 @@ const Tag = href ? "a" : "button";
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, var(--midnight-navy), var(--steel-blue));
+    background: var(--hover-background, linear-gradient(to right, var(--midnight-navy), var(--steel-blue)));
     transition: left 0.3s ease;
     border-radius: inherit;
     z-index: 0;
     overflow: hidden;
+  }
+
+  /* Scroll adaptive buttons override the default hover background */
+  .btn-scroll-adaptive::before {
+    background: #ffffff !important;
   }
 
   .btn-swipe:hover::before {
@@ -121,10 +144,66 @@ const Tag = href ? "a" : "button";
   }
 
   .btn-swipe:hover .btn-content {
-    color: #ffffff;
+    color: var(--helios-orange);
+  }
+
+  .btn-light-theme:hover .btn-content {
+    color: var(--helios-orange);
   }
 
   .btn-content * {
     color: inherit;
   }
+
+  /* Scroll adaptive button styles */
+  /* Not scrolled: swipe reveals white, text becomes helios-orange */
+  .btn-scroll-adaptive::before {
+    background: #ffffff !important;
+  }
+
+  .btn-scroll-adaptive:hover .btn-content {
+    color: var(--helios-orange) !important;
+  }
+
+  /* Scrolled: swipe reveals midnight-navy, text stays helios-orange */
+  .btn-scroll-adaptive.is-scrolled::before {
+    background: var(--midnight-navy) !important;
+  }
+
+  .btn-scroll-adaptive.is-scrolled:hover .btn-content {
+    color: var(--helios-orange) !important;
+  }
 </style>
+
+<script>
+  // Handle scroll adaptive buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollAdaptiveButtons = document.querySelectorAll('.btn-scroll-adaptive');
+
+    if (scrollAdaptiveButtons.length > 0) {
+      const navbar = document.querySelector('nav');
+
+      if (navbar) {
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              const isScrolled = navbar.classList.contains('navbar-scrolled');
+
+              scrollAdaptiveButtons.forEach((button) => {
+                // Toggle is-scrolled directly on the button itself
+                button.classList.toggle('is-scrolled', isScrolled);
+                // Keep btn-light-theme in sync so the base text color stays correct
+                button.classList.toggle('btn-light-theme', isScrolled);
+              });
+            }
+          });
+        });
+
+        observer.observe(navbar, {
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      }
+    }
+  });
+</script>
