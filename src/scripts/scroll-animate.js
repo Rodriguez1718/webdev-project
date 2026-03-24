@@ -1115,6 +1115,15 @@ ready(() => {
     once:      true,
   });
 
+  animate("our-work-hvac-desc", {
+    from:      "fade-left",
+    delay:     200,
+    duration:  700,
+    distance:  80,
+    threshold: 0.15,
+    once:      true,
+  });
+
 });
 
 
@@ -1129,15 +1138,6 @@ ready(() => {
     distance:   30,
     threshold:  0.15,
     once:       true
-  });
-  
-  animate("our-work-hvac-desc", {
-    from:      "fade-left",
-    delay:     200,
-    duration:  700,
-    distance:  80,
-    threshold: 0.15,
-    once:      true,
   });
   
   animate("our-work-hvac-grid", {
