@@ -93,16 +93,16 @@ const trades = await getCollection("trades");
                                         >
                                             <g
                                                 set:html={getTradeIcon(
-                                                    trade.data.trade,
+                                                    trade.data.name.replace(' Services', ''),
                                                 )}
                                             />
                                         </svg>
                                         <div>
                                             <div class="font-medium text-[#0A1931]">
-                                                {trade.data.title}
+                                                {trade.data.name}
                                             </div>
                                             <div class="text-base text-gray-500">
-                                                {trade.data.shortTitle}
+                                                {trade.data.tagline}
                                             </div>
                                         </div>
                                     </a>
@@ -239,14 +239,14 @@ const trades = await getCollection("trades");
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <g set:html={getTradeIcon(trade.data.trade)} />
+                                <g set:html={getTradeIcon(trade.data.name.replace(' Services', ''))} />
                             </svg>
                             <div>
                                 <div class="font-medium">
-                                    {trade.data.title}
+                                    {trade.data.name}
                                 </div>
                                 <div class="text-base text-gray-500">
-                                    {trade.data.shortTitle}
+                                    {trade.data.tagline}
                                 </div>
                             </div>
                         </a>
