@@ -167,7 +167,7 @@
 }
 
 .heading-primary {
-  @apply text-4xl md:text-5xl font-bold text-[#0A1931] leading-tight;
+  @apply text-3xl md:text-5xl font-bold text-[#0A1931] leading-tight;
 }
 
 .heading-secondary {
