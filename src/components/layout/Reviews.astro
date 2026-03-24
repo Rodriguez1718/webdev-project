@@ -117,7 +117,7 @@ const reviews = allReviews.sort((a, b) => a.data.order - b.data.order);
                   </div>
 
                   <!-- Client Info -->
-                  <div class="flex items-center justify-between">
+                  <div class="flex items-center justify-between pb-12 md:pb-0">
                     <div class="flex items-center gap-3">
                       <div
                         class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white text-sm"
@@ -143,8 +143,8 @@ const reviews = allReviews.sort((a, b) => a.data.order - b.data.order);
             </div>
           </div>
 
-          <!-- Fixed Navigation Buttons aligned with Client Info -->
-          <div class="absolute bottom-8 lg:bottom-12 right-8 lg:right-12 z-10 flex gap-2">
+          <!-- Fixed Navigation Buttons - positioned below client info on mobile -->
+          <div class="absolute bottom-2 md:bottom-8 lg:bottom-12 right-8 lg:right-12 z-10 flex gap-2">
             <button
               class="carousel-prev-inner w-10 h-10 rounded-full transition-all hover:scale-110 flex items-center justify-center cursor-pointer shadow-lg"
               style="background: var(--helios-orange);"
