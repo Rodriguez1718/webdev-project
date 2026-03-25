@@ -49,7 +49,7 @@ const tradeName = trade.charAt(0).toUpperCase() + trade.slice(1);
                     {tradeTemplates.map((template, index) => (
                         <div id={`template-card-${index + 1}`} class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#99B0BB]/10 overflow-hidden flex flex-col h-full">
                             {/* Template Image */}
-                            <div class="relative h-64 overflow-hidden bg-gray-100">
+                            <div class="relative aspect-video overflow-hidden bg-gray-100">
                                 <img
                                     src={
                                         template.data.thumbnail ||
