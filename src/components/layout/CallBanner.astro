@@ -22,11 +22,11 @@ const {
 >
     <div class="max-w-7xl mx-auto">
         <div
-            class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 px-[32px]"
+            class="flex flex-col md:flex-row items-start justify-start gap-6 md:gap-8 px-[32px]"
         >
-            <!-- Centered Content - Message and Phone -->
-            <div class="text-center">
-                <h3 id="call-banner-title" class="text-3xl md:text-5xl font-bold text-white mb-2 leading-tight break-words">
+            <!-- Left-aligned Content - Message and Phone -->
+            <div class="text-left">
+                <h3 id="call-banner-title" class="font-bold text-white mb-2 leading-tight break-words" style="font-size: 45px;">
                     Don't Waste Your Time, Call Today: <a
                         href={`tel:${phoneNumber.replace(/[^0-9+]/g, "")}`}
                         class="text-[#F48C06] hover:underline transition-all duration-300 whitespace-nowrap"
