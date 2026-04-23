@@ -794,6 +794,15 @@ ready(() => {
     once:      true,
   });
   
+  animate("cta-feature-5", {
+    from:      "fade-right",
+    delay:     400,
+    duration:  700,
+    distance:  60,
+    threshold: 0.15,
+    once:      true,
+  });
+  
   animate("cta-form-card", {
     from:      "fade-left",
     delay:     0,
