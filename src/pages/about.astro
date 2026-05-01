@@ -9,20 +9,22 @@ import CoreSteps from "../components/layout/CoreSteps.astro";
 ---
 
 <BaseLayout
-    title="About BuildPro - Empowering Contractors with Digital Solutions"
-    description="Learn about BuildPro's mission to empower contractors and trades professionals with innovative digital solutions that drive real business growth and success."
+  title="About BuildPro - Empowering Contractors with Digital Solutions"
+  description="Learn about BuildPro's mission to empower contractors and trades professionals with innovative digital solutions that drive real business growth and success."
 >
-    <main>
-        <Hero2
-            eyebrow="OUR STORY"
-            headline="About Us"
-            highlightWord="Us"
-            description="We're passionate about empowering contractors and trades professionals with digital solutions that drive real business growth and sustainable success."
-            showForm={true}
-        />
-        <Statistics />
-        <Approach />
-        <FAQ />
-        <CTASection />
-    </main>
+  <main>
+    <Hero2
+      eyebrow="OUR STORY"
+      headline="About Us"
+      highlightWord="Us"
+      description="We're passionate about empowering contractors and trades professionals with digital solutions that drive real business growth and sustainable success."
+      showForm={true}
+    />
+    <Statistics />
+    <Approach />
+    <CoreSteps />
+
+    <FAQ />
+    <CTASection />
+  </main>
 </BaseLayout>
